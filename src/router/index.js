@@ -28,21 +28,21 @@ export default new Router({
           path: 'index',
           component: () => import('@/views/datasets/index'),
           name: 'DatasetsIndex',
-          meta: { title: '数据集', icon: 'dataset' }
+          meta: { title: '数据集', icon: 'datasets' }
         },
         {
           path: 'new',
           hidden: true,
           component: () => import('@/views/datasets/components/NewDataset'),
           name: 'NewDataset',
-          meta: { title: '新增数据集', icon: 'dataset' }
+          meta: { title: '新增数据集' }
         },
         {
           path: 'detail/:id',
           hidden: true,
           component: () => import('@/views/datasets/components/DatasetDetail'),
           name: 'DatasetDetail',
-          meta: { title: '数据集详情', icon: 'dataset' }
+          meta: { title: '数据集详情' }
         }
       ]
     },
@@ -54,7 +54,7 @@ export default new Router({
           path: 'index',
           component: () => import('@/views/train/index'),
           name: 'Train',
-          meta: { title: '训练', icon: 'run' }
+          meta: { title: '训练', icon: 'train-logo' }
         },
         {
           path: 'new',
@@ -73,7 +73,7 @@ export default new Router({
           path: 'index',
           component: () => import('@/views/algo-service/index'),
           name: 'AlgoService',
-          meta: { title: '在线化服务', icon: 'earth' }
+          meta: { title: '在线化服务', icon: 'algo-service' }
         },
         {
           path: 'new',
@@ -92,7 +92,7 @@ export default new Router({
           path: 'index',
           component: () => import('@/views/resources/index'),
           name: 'Resources',
-          meta: { title: '容器', icon: 'Resources' }
+          meta: { title: '容器', icon: 'resources' }
         }
       ]
     },
@@ -104,7 +104,7 @@ export default new Router({
           path: 'index',
           component: () => import('@/views/auto-algo-task/index'),
           name: 'AutoAlgoTask',
-          meta: { title: '自助算法任务', icon: 'tasks' }
+          meta: { title: '自助算法任务', icon: 'auto-algo-task' }
         }
       ]
     }
