@@ -14,10 +14,12 @@ import router from './router';
 import store from './store';
 import axios from 'axios';
 import './common/icons';
+import globalConstant from '@/common/js/global-constant';
 
 // import '@/common/js/permission';
 import { getToken } from '@/utils/user';
 
+Vue.prototype.GLOBAL = globalConstant;
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);

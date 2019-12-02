@@ -138,7 +138,7 @@ export default {
       this.loading = true;
       this.$store.dispatch('user/login', this.loginForm)
         .then((res) => {
-          this.$router.push('/dashboard');
+          this.$router.push('/datasets/index');
         })
         .catch(() => {
           this.loading = false;

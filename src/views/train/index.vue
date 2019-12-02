@@ -1,11 +1,18 @@
 <template>
   <div>
-   train
+    <train-header></train-header>
+    <train-main></train-main>
   </div>
 </template>
 
 <script>
+import TrainHeader from './components/TrainHeader.vue';
+import TrainMain from './components/TrainMain.vue';
 export default {
-  name: 'TrainPage'
+  name: 'Train',
+  components: {
+    TrainHeader,
+    TrainMain
+  }
 };
 </script>

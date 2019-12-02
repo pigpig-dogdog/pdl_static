@@ -7,36 +7,36 @@
       </el-col>
       <el-col :span="5">
         <div class="grid-content bg-purple">
-          <el-select v-model="listQuery.algoType" placeholder="请选择算法类型" style="width:100%">
-            <el-option
-              v-for="item in GLOBAL.algoTypes"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
-        </div>
-      </el-col>
-      <el-col :span="5">
-        <div class="grid-content bg-purple">
           <el-input v-model="listQuery.creatorName" placeholder="请输入创建者名字"></el-input>
         </div>
       </el-col>
       <el-col :span="5">
         <div class="grid-content bg-purple">
-          <el-input v-model="listQuery.name" placeholder="请输入数据集名称"></el-input>
+          <el-input v-model="listQuery.name" placeholder="请输入在线化服务名称"></el-input>
+        </div>
+      </el-col>
+      <el-col :span="5">
+        <div class="grid-content bg-purple">
+          <el-select v-model="listQuery.framework" placeholder="请选择深度学习框架" style="width:100%">
+            <el-option
+              v-for="item in GLOBAL.framework"
+              :key="item"
+              :label="item"
+              :value="item">
+            </el-option>
+          </el-select>
         </div>
       </el-col>
       <el-col :span="3">
         <div class="grid-content bg-purple">
-          <el-button type="primary" @click="searchDatasets">
+          <el-button type="primary" @click="searchAlgoService">
             搜索
           </el-button>
         </div>
       </el-col>
       <el-col :span="5"><div class="grid-content bg-purple">
-        <el-button type="primary" class="buttonStyle" @click="goCreateDataset">
-          新增数据集
+        <el-button type="primary" class="buttonStyle" @click="goCreateAlgoService">
+          新增在线化服务
         </el-button>
         </div>
       </el-col>
@@ -46,26 +46,26 @@
 
 <script>
 export default {
-  name: 'DatasetsHeader',
+  name: 'AlgoServiceHeader',
   data () {
     return {
       list: [],
       total: 0,
       listQuery: {
-        algoType: '',
+        framework: '',
         creatorName: '',
-        name: '', // 数据集名称
+        name: '', // 在线化服务名称
         pageNumber: 1,
-        pageSize: 8
+        pageSize: 20
       }
     };
   },
   methods: {
-    searchDatasets () {
-      this.$store.dispatch('datasets/getDatasetsList', this.listQuery);
+    searchAlgoService () {
+      this.$store.dispatch('algo_service/getAlgoServiceList', this.listQuery);
     },
-    goCreateDataset () {
-      this.$router.push('/datasets/new');
+    goCreateAlgoService () {
+      this.$router.push('/algo-service/new');
     }
   }
 };

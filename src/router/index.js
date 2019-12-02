@@ -20,15 +20,29 @@ export default new Router({
       component: () => import('@/views/login/index')
     },
     {
-      path: '/dashboard',
+      path: '/datasets',
       component: Layout,
-      redirect: '/datasets',
+      name: 'Datasets',
       children: [
         {
-          path: '/datasets',
+          path: 'index',
           component: () => import('@/views/datasets/index'),
-          name: 'Datasets',
+          name: 'DatasetsIndex',
           meta: { title: '数据集', icon: 'dataset' }
+        },
+        {
+          path: 'new',
+          hidden: true,
+          component: () => import('@/views/datasets/components/NewDataset'),
+          name: 'NewDataset',
+          meta: { title: '新增数据集', icon: 'dataset' }
+        },
+        {
+          path: 'detail/:id',
+          hidden: true,
+          component: () => import('@/views/datasets/components/DatasetDetail'),
+          name: 'DatasetDetail',
+          meta: { title: '数据集详情', icon: 'dataset' }
         }
       ]
     },
@@ -41,6 +55,13 @@ export default new Router({
           component: () => import('@/views/train/index'),
           name: 'Train',
           meta: { title: '训练', icon: 'run' }
+        },
+        {
+          path: 'new',
+          component: () => import('@/views/train/components/NewTrain'),
+          name: 'NewTrain',
+          hidden: true,
+          meta: { title: '新增训练' }
         }
       ]
     },
@@ -53,6 +74,13 @@ export default new Router({
           component: () => import('@/views/algo-service/index'),
           name: 'AlgoService',
           meta: { title: '在线化服务', icon: 'earth' }
+        },
+        {
+          path: 'new',
+          component: () => import('@/views/algo-service/components/NewAlgoService'),
+          name: 'NewAlgoService',
+          hidden: true,
+          meta: { title: '新增在线化服务' }
         }
       ]
     },

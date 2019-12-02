@@ -7,36 +7,36 @@
       </el-col>
       <el-col :span="5">
         <div class="grid-content bg-purple">
-          <el-select v-model="listQuery.algoType" placeholder="请选择算法类型" style="width:100%">
-            <el-option
-              v-for="item in GLOBAL.algoTypes"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
-        </div>
-      </el-col>
-      <el-col :span="5">
-        <div class="grid-content bg-purple">
           <el-input v-model="listQuery.creatorName" placeholder="请输入创建者名字"></el-input>
         </div>
       </el-col>
       <el-col :span="5">
         <div class="grid-content bg-purple">
-          <el-input v-model="listQuery.name" placeholder="请输入数据集名称"></el-input>
+          <el-input v-model="listQuery.name" placeholder="请输入训练名称"></el-input>
+        </div>
+      </el-col>
+      <el-col :span="5">
+        <div class="grid-content bg-purple">
+          <el-select v-model="listQuery.framework" placeholder="请选择深度学习框架" style="width:100%">
+            <el-option
+              v-for="item in GLOBAL.framework"
+              :key="item"
+              :label="item"
+              :value="item">
+            </el-option>
+          </el-select>
         </div>
       </el-col>
       <el-col :span="3">
         <div class="grid-content bg-purple">
-          <el-button type="primary" @click="searchDatasets">
+          <el-button type="primary" @click="searchTrain">
             搜索
           </el-button>
         </div>
       </el-col>
       <el-col :span="5"><div class="grid-content bg-purple">
-        <el-button type="primary" class="buttonStyle" @click="goCreateDataset">
-          新增数据集
+        <el-button type="primary" class="buttonStyle" @click="goCreateTrain">
+          新增训练
         </el-button>
         </div>
       </el-col>
@@ -46,26 +46,26 @@
 
 <script>
 export default {
-  name: 'DatasetsHeader',
+  name: 'TrainHeader',
   data () {
     return {
       list: [],
       total: 0,
       listQuery: {
-        algoType: '',
+        framework: '',
         creatorName: '',
-        name: '', // 数据集名称
+        name: '', // 训练名称
         pageNumber: 1,
-        pageSize: 8
+        pageSize: 20
       }
     };
   },
   methods: {
-    searchDatasets () {
-      this.$store.dispatch('datasets/getDatasetsList', this.listQuery);
+    searchTrain () {
+      this.$store.dispatch('train/getTrainList', this.listQuery);
     },
-    goCreateDataset () {
-      this.$router.push('/datasets/new');
+    goCreateTrain () {
+      this.$router.push('/train/new');
     }
   }
 };

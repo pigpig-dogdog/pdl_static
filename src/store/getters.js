@@ -3,7 +3,11 @@ const getters = {
   size: state => state.app.size,
   device: state => state.app.device,
   token: state => state.user.token,
-  username: state => state.user.username
+  username: state => state.user.username,
+  datasetsList: state => state.datasets.datasetsList,
+  imagesList: state => state.datasets.imagesList,
+  trainList: state => state.train.trainList,
+  algoServiceList: state => state.algo_service.algoServiceList
 };
 
 export default getters;
