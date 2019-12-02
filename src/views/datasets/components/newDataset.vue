@@ -9,7 +9,7 @@
       </el-form-item>
       <el-form-item label="算法类型" prop="algoType">
         <el-select v-model="form.algoType" placeholder="请选择算法类型">
-          <el-option v-for="data in GLOBAL.algoType" :key="data.value" :label="data.label" :value="data.value"></el-option>
+          <el-option v-for="data in GLOBAL.algoTypes" :key="data.value" :label="data.label" :value="data.value"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="标签总数">
