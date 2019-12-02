@@ -13,8 +13,9 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
+    console.log(config);
     // do something before request is sent
-    if (getToken()) {
+    if (getToken() && config.url !== '/user/login' && config.url !== '/user/register') {
       // let each request carry token
       // ['Authorization'] is a custom headers key
       // please modify it according to the actual situation
