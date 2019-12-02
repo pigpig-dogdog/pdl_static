@@ -15,6 +15,31 @@
       <el-form-item label="主类路径" prop="mainClassPath">
         <el-input v-model="createQuery.mainClassPath"></el-input>
       </el-form-item>
+      <el-form-item label="容器内存规格">
+        <el-select v-model="a" placeholder="请选择容器内存规格">
+          <el-option v-for="data in GLOBAL.memory" :key="data" :label="data" :value="data"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="容器CPU规格">
+        <el-select v-model="b" placeholder="请选择容器CPU规格">
+          <el-option v-for="data in GLOBAL.cpuSpeci" :key="data" :label="data" :value="data"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="容器CPU核数">
+        <el-select v-model="c" placeholder="请选择容器CPU核数">
+          <el-option v-for="data in GLOBAL.cpuCore" :key="data" :label="data" :value="data"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="容器GPU显存">
+        <el-select v-model="d" placeholder="请选择容器GPU显存">
+          <el-option v-for="data in GLOBAL.gpuMemory" :key="data" :label="data" :value="data"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="容器GPU个数">
+        <el-select v-model="e" placeholder="请选择容器GPU个数">
+          <el-option v-for="data in GLOBAL.gpuNum" :key="data" :label="data" :value="data"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
         <el-button @click="goAlgoServiceIndex">取消</el-button>
@@ -33,6 +58,11 @@ export default {
         framework: '',
         mainClassPath: ''
       },
+      a: '',
+      b: '',
+      c: '',
+      d: '',
+      e: '',
       codeZipFile: '',
       rules: {
         name: [

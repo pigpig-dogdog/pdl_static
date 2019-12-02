@@ -92,7 +92,7 @@ export default new Router({
           path: 'index',
           component: () => import('@/views/resources/index'),
           name: 'Resources',
-          meta: { title: '容器', icon: 'resources' }
+          meta: { title: '容器', icon: 'resources-logo' }
         }
       ]
     },
