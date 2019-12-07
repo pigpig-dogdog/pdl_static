@@ -39,13 +39,35 @@
         label="训练状态"
         align=center>
       </el-table-column>
+        <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            @click="openTrainLog(scope.$index, scope.row)"
+            type="primary"
+            plain>查看日志</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
+
+    <!-- 训练日志弹窗 -->
+    <el-dialog
+      title="训练日志"
+      :visible.sync="trainLogDialogVisible"
+      width="50%"
+      center>
+      <span style="margin:10px">{{ trainLog }}</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="trainLogDialogVisible = false">关闭</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import { getTrainLog } from '@/api/train';
 import Pagination from '@/components/Pagination';
 export default {
   name: 'TrainMain',
@@ -59,7 +81,9 @@ export default {
         pageNumber: 1,
         pageSize: 20
       },
-      list: []
+      list: [],
+      trainLogDialogVisible: false,
+      trainLog: ''
     };
   },
   computed: {
@@ -69,7 +93,6 @@ export default {
   },
   watch: {
     trainList: function (val) {
-      // this.total = 20; // for debug
       this.total = val.totalItemsNumber;
       this.list = val.list;
     }
@@ -80,6 +103,13 @@ export default {
   methods: {
     getList () {
       this.$store.dispatch('train/getTrainList', this.listQuery);
+    },
+    openTrainLog (index, row) {
+      console.log(row);
+      this.trainLogDialogVisible = true;
+      getTrainLog(row.id).then(response => {
+        this.trainLog = response.data;
+      });
     }
   }
 };

@@ -41,6 +41,12 @@
         align=center>
       </el-table-column>
       <el-table-column
+        prop="serviceUrl"
+        label="服务地址"
+        width="200"
+        align=center>
+      </el-table-column>
+      <el-table-column
         prop="status"
         label="在线化服务状态"
         align=center>

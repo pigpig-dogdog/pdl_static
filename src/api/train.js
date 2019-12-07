@@ -19,3 +19,10 @@ export function createTrain (query, data) {
     data: data
   });
 }
+
+export function getTrainLog (trainId) {
+  return request({
+    url: '/algo_train/' + trainId + '/log',
+    method: 'get'
+  });
+}
