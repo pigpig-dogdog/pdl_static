@@ -43,6 +43,13 @@ export default new Router({
           component: () => import('@/views/datasets/components/DatasetDetail'),
           name: 'DatasetDetail',
           meta: { title: '数据集详情' }
+        },
+        {
+          path: 'detail/:id/tag',
+          hidden: true,
+          component: () => import('@/views/datasets/tag-components/index'),
+          name: 'ImageTag',
+          meta: { title: '标注图片' }
         }
       ]
     },

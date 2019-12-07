@@ -2,7 +2,8 @@ import { getDatasetsList, getImagesList } from '@/api/datasets';
 
 const state = {
   datasetsList: [],
-  imagesList: []
+  imagesList: [],
+  tagsList: []
 };
 
 const mutations = {
@@ -11,6 +12,9 @@ const mutations = {
   },
   SET_IMAGES_LIST: (state, list) => {
     state.imagesList = list;
+  },
+  SET_TAGS_LIST: (state, list) => {
+    state.tagsList = list;
   }
 };
 
@@ -34,6 +38,9 @@ const actions = {
         reject(error);
       });
     });
+  },
+  getTagsList ({ commit }, data) {
+    commit('SET_TAGS_LIST', data);
   }
 };
 

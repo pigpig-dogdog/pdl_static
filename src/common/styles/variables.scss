@@ -19,7 +19,10 @@ $subMenuBg:#1f2d3d;
 $subMenuHover:#001528;
 
 $sideBarWidth: 210px;
+$navbarHeight: 50px;
 
+$sideBarWidthNum: 210;
+$navbarHeightNum: 50;
 //Navbar
 $navbarColor: #409EFF;
 
@@ -34,4 +37,7 @@ $navbarColor: #409EFF;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
   sideBarWidth: $sideBarWidth;
+  navbarHeight: $navbarHeight;
+  sideBarWidthNum: $sideBarWidthNum;
+  navbarHeightNum: $navbarHeightNum;
 }

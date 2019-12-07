@@ -82,8 +82,8 @@
       </el-dialog>
 
       <!-- 去标注 -->
-      <el-col span="4" align="middle" justify="center">
-        <el-button type="primary" class="goTagBtn">
+      <el-col :span="4" align="middle" justify="center">
+        <el-button type="primary" class="goTagBtn" @click="goImageTag">
           标注图片
         <svg-icon icon-class="Go" style="margin-left: 10px" />
         </el-button>
@@ -124,6 +124,7 @@ export default {
           this.detail.algoType = '检测';
         }
         this.classesNameList = response.data.classesNames.split(' ');
+        this.$store.dispatch('datasets/getTagsList', this.classesNameList);
       });
     },
     uploadCover (param) {
@@ -159,6 +160,9 @@ export default {
         this.$message.error('上传头像图片只能是 JPG 格式或 PNG 格式!');
       }
       return isJPG || isPNG;
+    },
+    goImageTag () {
+      this.$router.push(this.$route.params.id + '/tag');
     }
   }
 };

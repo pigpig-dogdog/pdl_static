@@ -35,9 +35,20 @@
         align=center>
       </el-table-column>
       <el-table-column
+        prop="instanceNumer"
+        label="实例数目"
+        width="200"
+        align=center>
+      </el-table-column>
+      <el-table-column
         prop="status"
         label="在线化服务状态"
         align=center>
+        <template slot-scope="scope">
+          <el-tag
+            :type="getTagColor(scope.row.status)"
+            disable-transitions>{{scope.row.status}}</el-tag>
+        </template>
       </el-table-column>
     </el-table>
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
@@ -79,7 +90,21 @@ export default {
   methods: {
     getList () {
       this.$store.dispatch('algo_service/getAlgoServiceList', this.listQuery);
+    },
+    getTagColor (status) {
+      if (status === 'WAITING') {
+        return 'warning';
+      } else if (status === 'SUCCESS') {
+        return 'success';
+      } else if (status === 'RUNNING') {
+        return '';
+      } else if (status === 'FAILED') {
+        return 'danger';
+      }
     }
   }
 };
 </script>
+
+<style scoped>
+</style>
