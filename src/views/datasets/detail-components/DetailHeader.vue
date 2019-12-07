@@ -2,7 +2,7 @@
   <div style="margin: 20px 0 20px 20px">
     <el-row type="flex" align="middle" justify="center">
       <!-- 数据集封面查看上传 -->
-      <el-col :span="5">
+      <el-col :span="4" align="middle" justify="center">
         <el-upload
           class="avatar-uploader"
           action="no"
@@ -80,6 +80,14 @@
           <el-button type="primary" @click="uploadImageDialogVisible = false">确 定</el-button>
         </span>
       </el-dialog>
+
+      <!-- 去标注 -->
+      <el-col span="4" align="middle" justify="center">
+        <el-button type="primary" class="goTagBtn">
+          标注图片
+        <svg-icon icon-class="Go" style="margin-left: 10px" />
+        </el-button>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -179,6 +187,11 @@ $coverHeight: 250px;
 
   .box-card {
     width: 480px;
+  }
+
+  .goTagBtn {
+    width: 150px;
+    font-size: 18px;
   }
 
   .avatar-uploader .el-upload {

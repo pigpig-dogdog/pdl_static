@@ -26,7 +26,6 @@ const actions = {
     });
   },
   getImagesList ({ commit }, data) {
-    console.log(data);
     return new Promise((resolve, reject) => {
       getImagesList(data.query, data.id).then(response => {
         commit('SET_IMAGES_LIST', response.data);
