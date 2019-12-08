@@ -125,6 +125,7 @@ export default {
       if (!this.tag) {
         return;
       }
+      alert('up');
       if (document.getElementById('activeBox') !== null) {
         var confirmBox = document.getElementById('activeBox');
         confirmBox.id = '';

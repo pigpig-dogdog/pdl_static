@@ -9,7 +9,7 @@
           <el-option v-for="data in GLOBAL.framework" :key="data" :label="data" :value="data"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="代码压缩文件" prop="codeZipFile">
+      <el-form-item label="代码压缩文件" prop="codeZipFile" required>
         <input type="file" @change="getZipFile"/>
       </el-form-item>
       <el-form-item label="程序入口参数" prop="entryAndArgs">

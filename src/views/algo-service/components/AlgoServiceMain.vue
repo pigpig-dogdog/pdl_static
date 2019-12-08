@@ -35,7 +35,7 @@
         align=center>
       </el-table-column>
       <el-table-column
-        prop="instanceNumer"
+        prop="instanceNumber"
         label="实例数目"
         width="200"
         align=center>
@@ -76,7 +76,8 @@ export default {
         pageNumber: 1,
         pageSize: 20
       },
-      list: []
+      list: [],
+      algoServiceStatusList: this.GLOBAL.algoServiceStatus
     };
   },
   computed: {
@@ -98,14 +99,10 @@ export default {
       this.$store.dispatch('algo_service/getAlgoServiceList', this.listQuery);
     },
     getTagColor (status) {
-      if (status === 'WAITING') {
-        return 'warning';
-      } else if (status === 'SUCCESS') {
-        return 'success';
-      } else if (status === 'RUNNING') {
-        return '';
-      } else if (status === 'FAILED') {
-        return 'danger';
+      for (var i = 0; i < this.algoServiceStatusList.length; i++) {
+        if (status === this.algoServiceStatusList[i].value) {
+          return this.algoServiceStatusList[i].tagType;
+        }
       }
     }
   }

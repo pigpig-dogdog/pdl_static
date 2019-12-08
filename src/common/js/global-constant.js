@@ -14,19 +14,41 @@ const framework = ['TENSORFLOW', 'KERAS', 'PYTORCH', 'MXNET', 'CAFFE'];
 const trainStatus = [
   {
     label: '等待',
-    value: 'WAITING'
+    value: 'WAITING',
+    tagType: 'warning'
   },
   {
     label: '运行中',
-    value: 'RUNNING'
+    value: 'RUNNING',
+    tagType: ''
   },
   {
     label: '成功',
-    value: 'SUCCESS'
+    value: 'SUCCESS',
+    tagType: 'success'
   },
   {
     label: '失败',
-    value: 'FAILED'
+    value: 'FAILED',
+    tagType: 'danger'
+  }
+];
+
+const algoServiceStatus = [
+  {
+    label: '等待',
+    value: 'WAITING',
+    tagType: 'warning'
+  },
+  {
+    label: '运行中',
+    value: 'SERVING',
+    tagType: ''
+  },
+  {
+    label: '失败',
+    value: 'EXITED',
+    tagType: 'danger'
   }
 ];
 
@@ -43,5 +65,6 @@ export default {
   cpuCore,
   cpuSpeci,
   gpuMemory,
-  gpuNum
+  gpuNum,
+  algoServiceStatus
 };
