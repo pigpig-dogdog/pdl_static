@@ -66,9 +66,9 @@
           <svg-icon icon-class = 'log' style="font-size:20px"/>
           <span>训练日志</span>
         </span>
-        <el-row v-for="(data, index) in trainLog" :key="data" class="logRow" :gutter="10">
-          <el-col :span="1" style="text-align:right;padding-right:5px">{{ index + 1 }}</el-col>
-          <el-col :span="18" style="padding-keft:10px">{{ data }}</el-col>
+        <el-row v-for="(data, index) in trainLog" :key="data" class="logRow">
+          <el-col :span="1" style="text-align:right;">{{ index + 1 }}</el-col>
+          <el-col :span="18" style="padding-left:10px">{{ data }}</el-col>
         </el-row>
       </el-dialog>
     </div>
@@ -172,6 +172,6 @@ export default {
 <style scoped>
 .logRow {
   font-size: 18px;
-  /* margin:5px; */
+  margin-bottom:5px;
 }
 </style>
