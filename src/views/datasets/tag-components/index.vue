@@ -45,6 +45,7 @@
             {{data.tag}}
             </span>
         </div>
+        <div class="newBox" id="newBox" name="newBox"></div>
         <div
           id="img"
           @mousedown="imageMouseDown($event)"
@@ -57,7 +58,6 @@
           </div>
       </el-main>
     </el-container>
-    <div class="newBox" id="newBox" name="newBox"></div>
   </div>
 </template>
 
@@ -91,13 +91,13 @@ export default {
   },
   methods: {
     imageMouseDown (e) {
+      this.$notify.warning('down');
       if (!this.tag) {
         return;
       }
       this.box.x1 = e.pageX - this.sidebarWidth; // box相对界面的初始横坐标
       this.box.y1 = e.pageY - this.navbarHeight; // box相对界面的初始纵坐标
       var activeBox = document.getElementsByName('newBox')[0];
-      console.log(activeBox);
       activeBox.id = 'activeBox';
       activeBox.className = 'newBox';
       activeBox.style.top = this.box.y1 + this.navbarHeight + 'px';
@@ -125,7 +125,7 @@ export default {
       if (!this.tag) {
         return;
       }
-      alert('up');
+      this.$notify.warning('up');
       if (document.getElementById('activeBox') !== null) {
         var confirmBox = document.getElementById('activeBox');
         confirmBox.id = '';
@@ -137,7 +137,6 @@ export default {
           this.box.y2 = e.pageY - this.navbarHeight;
           this.box.tag = this.tag;
           this.boxes.push(this.box);
-          console.log(this.boxes);
           this.box = {
             x1: '',
             y1: '',
@@ -145,6 +144,7 @@ export default {
             y2: '',
             tag: ''
           };
+          confirmBox.style = '';
         }
       }
     }
@@ -182,8 +182,4 @@ export default {
     cursor: move;
     border: 3px solid rgb(40, 13, 158);
 }
-  // .box-card {
-  //   // width: 480px;
-  //   height: 60%
-  // }
 </style>

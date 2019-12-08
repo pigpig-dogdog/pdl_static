@@ -1,6 +1,5 @@
 import router from '@/router';
-import { getToken, removeToken } from '@/utils/user';
-import getPageTitle from '@/utils/get-page-title';
+import { getToken } from '@/utils/user';
 import store from '@/store';
 const hasToken = getToken();
 
