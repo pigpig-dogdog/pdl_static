@@ -91,62 +91,35 @@ const k8sMonitorList = [
     ]
   },
   {
-    id: 'images',
-    name: 'K8S Images',
-    api: 'listImages',
-    attributes: [
-      {
-        name: 'name',
-        columnWidth: 300,
-        label: '镜像名称'
-      },
-      {
-        name: 'sizeMb',
-        columnWidth: '',
-        label: '镜像大小'
-      }
-    ]
-  },
-  {
     id: 'deployments',
     name: 'K8S Deployments',
     api: 'listDeployments',
     attributes: [
       {
         name: 'algoDeployName',
-        columnWidth: 300,
+        columnWidth: 200,
         fixBoolean: true,
         label: '算法在线化服务名称'
       },
       {
         name: 'creator',
-        columnWidth: 300,
+        columnWidth: 100,
         label: '创建者'
       },
       {
         name: 'createTime',
-        columnWidth: 300,
+        columnWidth: 200,
         label: '创建时间'
       },
       {
         name: 'replicas',
-        columnWidth: 300,
+        columnWidth: 100,
         label: '总实例'
       },
       {
         name: 'readyReplicas',
-        columnWidth: 300,
+        columnWidth: 100,
         label: '可用实例'
-      },
-      {
-        name: 'unavailableReplicas',
-        columnWidth: 300,
-        label: '不可用实例'
-      },
-      {
-        name: 'updatedReplicas',
-        columnWidth: 300,
-        label: '正在更新的实例'
       },
       {
         name: 'image',
@@ -160,7 +133,7 @@ const k8sMonitorList = [
       },
       {
         name: 'args',
-        columnWidth: '',
+        columnWidth: 600,
         label: '命令参数'
       }
     ]
@@ -172,44 +145,61 @@ const k8sMonitorList = [
     attributes: [
       {
         name: 'algoTrainName',
-        columnWidth: 300,
+        columnWidth: 150,
         fixBoolean: true,
         label: '算法训练名称'
       },
       {
         name: 'creator',
-        columnWidth: 300,
+        columnWidth: 100,
         label: '创建者'
       },
       {
         name: 'createTime',
-        columnWidth: 300,
+        columnWidth: 200,
         label: '开始时间'
       },
       {
         name: 'endTime',
-        columnWidth: 300,
+        columnWidth: 200,
         label: '结束时间'
       },
       {
         name: 'status',
-        columnWidth: 300,
+        columnWidth: 100,
         label: '状态'
       },
       {
         name: 'image',
-        columnWidth: 300,
+        columnWidth: 150,
         label: '镜像'
       },
       {
         name: 'command',
-        columnWidth: 300,
+        columnWidth: 150,
         label: '容器执行的命令'
       },
       {
         name: 'args',
-        columnWidth: '',
+        columnWidth: 600,
         label: '命令参数'
+      }
+    ]
+  },
+  {
+    id: 'images',
+    name: 'K8S Images',
+    api: 'listImages',
+    attributes: [
+      {
+        name: 'name',
+        columnWidth: 600,
+        label: '镜像名称'
+      },
+      {
+        name: 'sizeMb',
+        columnWidth: '',
+        label: '镜像大小'
       }
     ]
   }
