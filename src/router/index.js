@@ -108,7 +108,7 @@ export default new Router({
           path: 'index',
           component: () => import('@/views/resources/index'),
           name: 'Resources',
-          meta: { title: '容器', icon: 'resources-logo' }
+          meta: { title: 'k8s监控台', icon: 'k8s' }
         }
       ]
     },

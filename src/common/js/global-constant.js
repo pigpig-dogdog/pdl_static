@@ -62,6 +62,159 @@ const algoServiceStatus = [
   }
 ];
 
+const k8sMonitorList = [
+  {
+    id: 'services',
+    name: 'K8S Services',
+    api: 'listServices',
+    attributes: [
+      {
+        name: 'algoDeployName',
+        columnWidth: 300,
+        label: '算法在线化服务名称'
+      },
+      {
+        name: 'creator',
+        columnWidth: 300,
+        label: '创建者'
+      },
+      {
+        name: 'serviceUrl',
+        columnWidth: 300,
+        label: '服务地址'
+      },
+      {
+        name: 'createTime',
+        columnWidth: '',
+        label: '创建时间'
+      }
+    ]
+  },
+  {
+    id: 'images',
+    name: 'K8S Images',
+    api: 'listImages',
+    attributes: [
+      {
+        name: 'name',
+        columnWidth: 300,
+        label: '镜像名称'
+      },
+      {
+        name: 'sizeMb',
+        columnWidth: '',
+        label: '镜像大小'
+      }
+    ]
+  },
+  {
+    id: 'deployments',
+    name: 'K8S Deployments',
+    api: 'listDeployments',
+    attributes: [
+      {
+        name: 'algoDeployName',
+        columnWidth: 300,
+        fixBoolean: true,
+        label: '算法在线化服务名称'
+      },
+      {
+        name: 'creator',
+        columnWidth: 300,
+        label: '创建者'
+      },
+      {
+        name: 'createTime',
+        columnWidth: 300,
+        label: '创建时间'
+      },
+      {
+        name: 'replicas',
+        columnWidth: 300,
+        label: '总实例'
+      },
+      {
+        name: 'readyReplicas',
+        columnWidth: 300,
+        label: '可用实例'
+      },
+      {
+        name: 'unavailableReplicas',
+        columnWidth: 300,
+        label: '不可用实例'
+      },
+      {
+        name: 'updatedReplicas',
+        columnWidth: 300,
+        label: '正在更新的实例'
+      },
+      {
+        name: 'image',
+        columnWidth: 300,
+        label: '镜像'
+      },
+      {
+        name: 'command',
+        columnWidth: 300,
+        label: '容器执行的命令'
+      },
+      {
+        name: 'args',
+        columnWidth: '',
+        label: '命令参数'
+      }
+    ]
+  },
+  {
+    id: 'job',
+    name: 'K8S Job',
+    api: 'listJobs',
+    attributes: [
+      {
+        name: 'algoTrainName',
+        columnWidth: 300,
+        fixBoolean: true,
+        label: '算法训练名称'
+      },
+      {
+        name: 'creator',
+        columnWidth: 300,
+        label: '创建者'
+      },
+      {
+        name: 'createTime',
+        columnWidth: 300,
+        label: '开始时间'
+      },
+      {
+        name: 'endTime',
+        columnWidth: 300,
+        label: '结束时间'
+      },
+      {
+        name: 'status',
+        columnWidth: 300,
+        label: '状态'
+      },
+      {
+        name: 'image',
+        columnWidth: 300,
+        label: '镜像'
+      },
+      {
+        name: 'command',
+        columnWidth: 300,
+        label: '容器执行的命令'
+      },
+      {
+        name: 'args',
+        columnWidth: '',
+        label: '命令参数'
+      }
+    ]
+  }
+];
+
 const memory = ['4G', '8G', '16G'];
 const cpuSpeci = ['intel i3', 'intel i5', 'intel i7'];
 const cpuCore = ['1核', '2核', '4核'];
@@ -101,22 +254,6 @@ const testClassifyImagesList = [
     id: '6',
     url: require('@/assets/testClassifyImages/7.jpg')
   }
-  // {
-  //   id: '5',
-  //   url: require('@/assets/testClassifyImages/8.jpg')
-  // },
-  // {
-  //   id: '4',
-  //   url: require('@/assets/testClassifyImages/9.jpg')
-  // },
-  // {
-  //   id: '3',
-  //   url: require('@/assets/testClassifyImages/10.jpg')
-  // },
-  // {
-  //   id: '2',
-  //   url: require('@/assets/testClassifyImages/12.jpg')
-  // }
 ];
 
 export default {
@@ -129,5 +266,6 @@ export default {
   gpuMemory,
   gpuNum,
   algoServiceStatus,
+  k8sMonitorList,
   testClassifyImagesList
 };

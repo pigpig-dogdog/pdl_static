@@ -1,11 +1,18 @@
 <template>
   <div>
-    Resources
+    <resources-header></resources-header>
+    <resources-main></resources-main>
   </div>
 </template>
 
 <script>
+import ResourcesHeader from './components/ResourcesHeader';
+import ResourcesMain from './components/ResourcesMain';
 export default {
-  name: 'Resources'
+  name: 'Resources',
+  components: {
+    ResourcesHeader,
+    ResourcesMain
+  }
 };
 </script>
