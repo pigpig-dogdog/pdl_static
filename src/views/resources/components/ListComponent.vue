@@ -8,14 +8,14 @@
     <el-table
       :data="list"
       stripe
-      height="150"
+      height="300"
       style="width: 100%">
       <el-table-column
         v-for="data in tableAttributes"
         :key="data.name"
         :prop="data.name"
         :label="data.label"
-        :width="data.columnWitdh"
+        :width="data.columnWidth"
         :fixed="data.fixBoolean"
         align=center>
       </el-table-column>

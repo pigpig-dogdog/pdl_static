@@ -5,28 +5,12 @@
         <div class="grid-content bg-purple">
         </div>
       </el-col>
-      <el-col :span="5">
-        <div class="grid-content bg-purple">
-          <el-select v-model="listQuery.algoType" placeholder="请选择算法类型" style="width:100%">
-            <el-option
-              v-for="item in GLOBAL.algoTypes"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
-        </div>
-      </el-col>
-      <el-col :span="5">
+      <el-col :span="7">
         <div class="grid-content bg-purple">
           <el-input v-model="listQuery.creatorName" placeholder="请输入创建者名字"></el-input>
         </div>
       </el-col>
-      <el-col :span="5">
-        <div class="grid-content bg-purple">
-          <el-input v-model="listQuery.name" placeholder="请输入数据集名称"></el-input>
-        </div>
-      </el-col>
+
       <el-col :span="3">
         <div class="grid-content bg-purple">
           <el-button type="primary" @click="searchDatasets">
