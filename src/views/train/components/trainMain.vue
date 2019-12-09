@@ -51,6 +51,11 @@
             @click="openTrainLog(scope.$index, scope.row)"
             type="primary"
             plain>查看日志</el-button>
+            <el-button
+            size="mini"
+            @click="downloadResult(scope.$index, scope.row)"
+            :type="getResultBtnType(scope.row.status)"
+            plain>{{ resultText }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -77,7 +82,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getTrainLog } from '@/api/train';
+import { getTrainLog, getTrainResult } from '@/api/train';
 import Pagination from '@/components/Pagination';
 export default {
   name: 'TrainMain',
@@ -95,7 +100,8 @@ export default {
       trainLogDialogVisible: false,
       trainLog: [],
       trainName: '',
-      trainStatusList: this.GLOBAL.trainStatus
+      trainStatusList: this.GLOBAL.trainStatus,
+      resultText: ''
     };
   },
   computed: {
@@ -119,8 +125,6 @@ export default {
     openTrainLog (index, row) {
       this.trainName = row.name;
       this.trainLogDialogVisible = true;
-      var data = 'Download code\neee\nddd\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss\nssss';
-      this.trainLog = data.split('\n');
       getTrainLog(row.id).then(response => {
         var data = response.data;
         this.trainLog = data.split('\n');
@@ -129,10 +133,30 @@ export default {
     getTagColor (status) {
       for (var i = 0; i < this.trainStatusList.length; i++) {
         if (status === this.trainStatusList[i].value) {
-          console.log(status);
           return this.trainStatusList[i].tagType;
         }
       }
+    },
+    getResultBtnType (status) {
+      for (var i = 0; i < this.trainStatusList.length; i++) {
+        if (status === this.trainStatusList[i].value) {
+          this.resultText = this.trainStatusList[i].resultText;
+          return this.trainStatusList[i].resultBtnType;
+        }
+      }
+    },
+    downloadResult (index, row) {
+      console.log(row.status);
+      // TODO:如何做到不使用字符串来判断，以便后端status字段改变时，只需要改变全局定义的常量即可
+      if (row.status === 'WAITING' || row.status === 'RUNNING') {
+        this.$notify({
+          title: row.name,
+          message: '训练还未结束，暂无训练结果',
+          type: 'warning'
+        });
+        return;
+      }
+      getTrainResult();
     }
   }
 };

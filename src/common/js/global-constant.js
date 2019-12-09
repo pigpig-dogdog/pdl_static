@@ -15,22 +15,30 @@ const trainStatus = [
   {
     label: '等待',
     value: 'WAITING',
-    tagType: 'warning'
+    tagType: 'warning',
+    resultBtnType: 'info',
+    resultText: '暂无结果'
   },
   {
     label: '运行中',
     value: 'RUNNING',
-    tagType: ''
+    tagType: '',
+    resultBtnType: 'info',
+    resultText: '暂无结果'
   },
   {
     label: '成功',
     value: 'SUCCESS',
-    tagType: 'success'
+    tagType: 'success',
+    resultBtnType: 'success',
+    resultText: '结果下载'
   },
   {
     label: '失败',
     value: 'FAILED',
-    tagType: 'danger'
+    tagType: 'danger',
+    resultBtnType: 'success',
+    resultText: '结果下载'
   }
 ];
 

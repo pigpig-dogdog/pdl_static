@@ -52,7 +52,7 @@
           @mousemove="imageMouseMove($event)"
           @mouseup="imageMouseUp($event)">
           <img
-            src="@/assets/test-images/2.jpg"
+            src="@/assets/test-images/9.jpg"
             alt="图片"
             ondragstart="return false;"/>
           </div>
@@ -100,6 +100,7 @@ export default {
       var activeBox = document.getElementsByName('newBox')[0];
       activeBox.id = 'activeBox';
       activeBox.className = 'newBox';
+      activeBox.setAttribute('ondragover', 'allowDrop($event');
       activeBox.style.top = this.box.y1 + this.navbarHeight + 'px';
       activeBox.style.left = this.box.x1 + this.sidebarWidth + 'px';
       document.body.appendChild(activeBox);
@@ -147,9 +148,18 @@ export default {
           confirmBox.style = '';
         }
       }
+    },
+    allowDrop (e) {
+      e.preventDefault();
+    },
+    drop (e) {
+      e.preventDefault();
+      // var data = event.dataTransfer.getData('Text');
     }
   }
 };
+// TODO:拉框不跟随图片无法自适应，一旦网页结构改变，框就偏离了原来的位置
+// TODO:有时候会出现无法坚持mouseup的情况
 </script>
 
 <style lang="scss" scoped>
