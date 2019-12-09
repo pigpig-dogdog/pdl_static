@@ -9,6 +9,9 @@
         label="名称"
         width="180"
         align=center>
+        <template slot-scope="scope">
+          <span style="text-decoration:underline;color:#409eff" title="点击查看训练详情">{{ scope.row.name }}</span>
+        </template>
       </el-table-column>
       <el-table-column
         prop="creatorName"

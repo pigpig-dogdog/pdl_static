@@ -1,11 +1,13 @@
 const algoTypes = [
   {
     label: '分类',
-    value: 'CLASSIFICATION'
+    value: 'CLASSIFICATION',
+    tagUrl: '/classify'
   },
   {
     label: '检测',
-    value: 'DETECTION'
+    value: 'DETECTION',
+    tagUrl: '/detection'
   }
 ];
 
@@ -65,6 +67,58 @@ const cpuSpeci = ['intel i3', 'intel i5', 'intel i7'];
 const cpuCore = ['1核', '2核', '4核'];
 const gpuMemory = ['2G', '4G', '8G', '16G'];
 const gpuNum = ['1个', '2个', '4个'];
+
+const testClassifyImagesList = [
+  {
+    id: '1',
+    url: require('@/assets/testClassifyImages/1.jpg')
+  },
+  {
+    id: '12',
+    url: require('@/assets/testClassifyImages/2.jpg')
+  },
+  {
+    id: '11',
+    url: require('@/assets/testClassifyImages/cat1.jpg')
+  },
+  {
+    id: '10',
+    url: require('@/assets/testClassifyImages/3.jpg')
+  },
+  {
+    id: '9',
+    url: require('@/assets/testClassifyImages/4.jpg')
+  },
+  {
+    id: '8',
+    url: require('@/assets/testClassifyImages/5.jpg')
+  },
+  {
+    id: '7',
+    url: require('@/assets/testClassifyImages/6.jpg')
+  },
+  {
+    id: '6',
+    url: require('@/assets/testClassifyImages/7.jpg')
+  }
+  // {
+  //   id: '5',
+  //   url: require('@/assets/testClassifyImages/8.jpg')
+  // },
+  // {
+  //   id: '4',
+  //   url: require('@/assets/testClassifyImages/9.jpg')
+  // },
+  // {
+  //   id: '3',
+  //   url: require('@/assets/testClassifyImages/10.jpg')
+  // },
+  // {
+  //   id: '2',
+  //   url: require('@/assets/testClassifyImages/12.jpg')
+  // }
+];
+
 export default {
   algoTypes,
   framework,
@@ -74,5 +128,6 @@ export default {
   cpuSpeci,
   gpuMemory,
   gpuNum,
-  algoServiceStatus
+  algoServiceStatus,
+  testClassifyImagesList
 };

@@ -99,6 +99,8 @@ export default {
   data () {
     return {
       detail: '',
+      tagUrl: '',
+      algoTypes: this.GLOBAL.algoTypes,
       coverImageUrl: '',
       uploadQuery: { isCoverImage: false },
       uploadImageDialogVisible: false,
@@ -118,10 +120,11 @@ export default {
       getDatasetDetail(this.$route.params.id).then(response => {
         this.detail = response.data;
         this.coverImageUrl = response.data.coverImageUrl;
-        if (response.data.algoType === 'CLASSIFICATION') {
-          this.detail.algoType = '分类';
-        } else {
-          this.detail.algoType = '检测';
+        for (var i = 0; i < this.algoTypes.length; i++) {
+          if (response.data.algoType === this.algoTypes[i].value) {
+            this.detail.algoType = this.algoTypes[i].label;
+            this.tagUrl = this.algoTypes[i].tagUrl;
+          }
         }
         this.classesNameList = response.data.classesNames.split(' ');
         this.$store.dispatch('datasets/getTagsList', this.classesNameList);
@@ -154,6 +157,7 @@ export default {
       this.coverImageUrl = URL.createObjectURL(file.raw);
     },
     beforeCoverUpload (file) {
+      // TODO:图片格式可以为任意
       const isJPG = file.type === 'image/jpeg';
       const isPNG = file.type === 'image/png';
       if (!isJPG && !isPNG) {
@@ -162,7 +166,7 @@ export default {
       return isJPG || isPNG;
     },
     goImageTag () {
-      this.$router.push(this.$route.params.id + '/tag');
+      this.$router.push(this.$route.params.id + this.tagUrl);
     }
   }
 };

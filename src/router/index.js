@@ -5,6 +5,8 @@ import Layout from '@/layout';
 
 Vue.use(Router);
 
+// TODO: 路由结构修改  应该是一个主页面，component为Layout，侧边栏菜单页面均为其子页面
+
 export default new Router({
   routes: [
     {
@@ -45,11 +47,18 @@ export default new Router({
           meta: { title: '数据集详情' }
         },
         {
-          path: 'detail/:id/tag',
+          path: 'detail/:id/detection',
           hidden: true,
-          component: () => import('@/views/datasets/tag-components/index'),
-          name: 'ImageTag',
-          meta: { title: '标注图片' }
+          component: () => import('@/views/datasets/tag/detection'),
+          name: 'ImageDetection',
+          meta: { title: '图片检测' }
+        },
+        {
+          path: 'detail/:id/classify',
+          hidden: true,
+          component: () => import('@/views/datasets/tag/classify'),
+          name: 'ImageClassify',
+          meta: { title: '图片分类' }
         }
       ]
     },

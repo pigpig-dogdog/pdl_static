@@ -64,7 +64,7 @@
 <script>
 import variables from '@/common/styles/variables.scss';
 export default {
-  name: 'ImageTag',
+  name: 'ImageDetection',
   data () {
     return {
       tagsList: this.$store.state.datasets.tagsList,

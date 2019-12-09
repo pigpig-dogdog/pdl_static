@@ -39,3 +39,12 @@ export function uploadImage (query, id, data) {
     data: data
   });
 }
+
+// 数据标注
+export function getClassifyImagesList (query, id) {
+  return request({
+    url: '/dataset/' + id + '/listImages',
+    method: 'get',
+    params: query
+  });
+}
