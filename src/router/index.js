@@ -59,6 +59,13 @@ export default new Router({
           component: () => import('@/views/datasets/tag/classify'),
           name: 'ImageClassify',
           meta: { title: '图片分类' }
+        },
+        {
+          path: 'detail/:id/auto-algo-task',
+          component: () => import('@/views/auto-algo-task/components/detail'),
+          hidden: true,
+          name: 'AutoAlgoTaskDetail',
+          meta: { title: '自助算法任务详情' }
         }
       ]
     },

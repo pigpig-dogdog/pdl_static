@@ -16,7 +16,7 @@
       </el-col>
 
       <!-- 数据集详细信息展示   数据集上传图片-->
-      <el-col :span="8">
+      <el-col :span="9">
         <el-card class="box-card" style="width:100%">
           <div slot="header" class="clearfix">
             <span style="font-size:20px">{{detail.name}}（共{{detail.imagesNumber}}张图片）</span>
@@ -82,11 +82,21 @@
       </el-dialog>
 
       <!-- 去标注 -->
-      <el-col :span="4" align="middle" justify="center">
-        <el-button type="primary" class="goTagBtn" @click="goImageTag">
-          标注图片
-        <svg-icon icon-class="Go" style="margin-left: 10px" />
-        </el-button>
+      <el-col :span="4" align="left" justify="center">
+        <el-container>
+          <el-header>
+            <el-button type="primary" class="goTagBtn" @click="goImageTag">
+              标注图片
+              <svg-icon icon-class="Go" style="margin-left: 10px" />
+            </el-button>
+          </el-header>
+          <el-footer>
+             <el-button type="primary" class="goAutoAlgoTaskBtn" @click="goAutoAlgoTask">
+              自助式算法任务
+            <svg-icon icon-class="Go" style="margin-left: 10px" />
+            </el-button>
+          </el-footer>
+        </el-container>
       </el-col>
     </el-row>
   </div>
@@ -167,6 +177,9 @@ export default {
     },
     goImageTag () {
       this.$router.push(this.$route.params.id + this.tagUrl);
+    },
+    goAutoAlgoTask () {
+      this.$router.push(this.$route.params.id + '/auto-algo-task');
     }
   }
 };
@@ -201,7 +214,10 @@ $coverHeight: 250px;
     width: 150px;
     font-size: 18px;
   }
-
+  .goAutoAlgoTaskBtn {
+    width: 200px;
+    font-size: 18px;
+  }
   .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;

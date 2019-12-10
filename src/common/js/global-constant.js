@@ -62,6 +62,7 @@ const algoServiceStatus = [
   }
 ];
 
+// TODO:将数组拆分为单个对象
 const k8sMonitorList = [
   {
     id: 'services',
@@ -181,7 +182,7 @@ const k8sMonitorList = [
       },
       {
         name: 'args',
-        columnWidth: 600,
+        columnWidth: '',
         label: '命令参数'
       }
     ]
@@ -204,6 +205,110 @@ const k8sMonitorList = [
     ]
   }
 ];
+
+// AutoAlgoTaskDetail
+const AutoAlgoTaskDetailTableList = [
+  {
+    id: 'train',
+    info: 'trainInfo'
+  },
+  {
+    id: 'algoService',
+    info: 'algoServiceInfo'
+  }
+];
+
+// trainInfo
+const trainInfo = {
+  id: 'train',
+  name: '训练',
+  data: 'autoAlgoTaskTrainList',
+  api: '/algo_train/list',
+  status: {
+    name: 'status',
+    statusList: 'trainStatus',
+    columnWidth: 200,
+    label: '训练状态'
+  },
+  operations: {
+    name: 'operations',
+    columnWidth: '',
+    data: [
+      {
+        title: '查看日志',
+        type: 'primary'
+      },
+      {
+        title: '结果下载',
+        type: 'success'
+      }
+    ],
+    label: '操作'
+  },
+  attributes: [
+    {
+      name: 'name',
+      columnWidth: 300,
+      label: '名称'
+    },
+    {
+      name: 'createTime',
+      columnWidth: 200,
+      label: '创建时间'
+    },
+    {
+      name: 'updatedTime',
+      columnWidth: 200,
+      label: '创建时间'
+    },
+    // TODO: 准确率字段名
+    {
+      name: 'right',
+      columnWidth: 200,
+      label: '准确率'
+    }
+  ]
+};
+
+const algoServiceInfo = {
+  id: 'algoService',
+  name: '在线化服务',
+  data: 'autoAlgoTaskServiceList',
+  api: '/algo_train/list',
+  status: {
+    name: 'status',
+    statusList: 'algoServiceStatus',
+    columnWidth: '',
+    label: '在线化服务状态'
+  },
+  attributes: [
+    {
+      name: 'name',
+      columnWidth: 300,
+      label: '名称'
+    },
+    {
+      name: 'createTime',
+      columnWidth: 200,
+      label: '创建时间'
+    },
+    {
+      name: 'updatedTime',
+      columnWidth: 200,
+      label: '修改时间'
+    },
+    {
+      name: 'instanceNumber',
+      columnWidth: 200,
+      label: '实例数目'
+    },
+    {
+      name: 'serviceUrl',
+      columnWidth: 300,
+      label: '服务地址'
+    }
+  ]
+};
 
 const memory = ['4G', '8G', '16G'];
 const cpuSpeci = ['intel i3', 'intel i5', 'intel i7'];
@@ -246,6 +351,48 @@ const testClassifyImagesList = [
   }
 ];
 
+const autoAlgoTaskTrainList = [
+  {
+    name: 'auto_algo_task_2_resnet50',
+    createTime: '2019-12-09 10:51:31',
+    updatedTime: '2019-12-09 10:58:50',
+    status: 'SUCCESS',
+    right: '0.9565'
+  },
+  {
+    name: 'auto_algo_task_2_resnet50',
+    createTime: '2019-12-09 10:51:33',
+    updatedTime: '2019-12-09 10:56:21',
+    status: 'SUCCESS',
+    right: '0.9674'
+  },
+  {
+    name: 'auto_algo_task_2_resnet50',
+    createTime: '2019-12-09 10:51:34',
+    updatedTime: '2019-12-09 10:57:42',
+    status: 'SUCCESS',
+    right: '0.9620'
+  },
+  {
+    name: 'auto_algo_task_2_resnet50',
+    createTime: '2019-12-09 10:51:36',
+    updatedTime: '2019-12-09 11:10:16',
+    status: 'SUCCESS',
+    right: '0.9464'
+  }
+];
+
+const autoAlgoTaskServiceList = [
+  {
+    name: 'auto_algo_task_2_resnet50',
+    createTime: '2019-12-09 10:51:31',
+    updatedTime: '2019-12-09 10:58:50',
+    status: 'SERVING',
+    instanceNumber: 2,
+    serviceUrl: 'http://192.168.64.2:30336'
+  }
+];
+
 export default {
   algoTypes,
   framework,
@@ -257,5 +404,10 @@ export default {
   gpuNum,
   algoServiceStatus,
   k8sMonitorList,
-  testClassifyImagesList
+  trainInfo,
+  algoServiceInfo,
+  testClassifyImagesList,
+  autoAlgoTaskServiceList,
+  autoAlgoTaskTrainList, // TODO:test list ,之后要删掉
+  AutoAlgoTaskDetailTableList
 };
