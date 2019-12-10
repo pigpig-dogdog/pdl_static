@@ -93,3 +93,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.menu-wrapper {
+  .el-menu-item {
+    height: 80px;
+    line-height: 80px;
+    font-size: 18px;
+  }
+}
+</style>
