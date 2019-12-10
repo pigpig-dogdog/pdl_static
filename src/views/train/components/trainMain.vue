@@ -47,7 +47,7 @@
             disable-transitions>{{scope.row.status}}</el-tag>
         </template>
       </el-table-column>
-        <el-table-column label="操作">
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
             size="mini"

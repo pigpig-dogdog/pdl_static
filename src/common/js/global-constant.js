@@ -281,6 +281,17 @@ const algoServiceInfo = {
     columnWidth: '',
     label: '在线化服务状态'
   },
+  operations: {
+    name: 'operations',
+    columnWidth: '',
+    data: [
+      {
+        title: '修改实例数目',
+        type: 'primary'
+      }
+    ],
+    label: '操作'
+  },
   attributes: [
     {
       name: 'name',
@@ -353,28 +364,28 @@ const testClassifyImagesList = [
 
 const autoAlgoTaskTrainList = [
   {
-    name: 'auto_algo_task_2_resnet50',
+    name: 'auto_algo_task_12_resnet50',
     createTime: '2019-12-09 10:51:31',
     updatedTime: '2019-12-09 10:58:50',
     status: 'SUCCESS',
     right: '0.9565'
   },
   {
-    name: 'auto_algo_task_2_resnet50',
+    name: 'auto_algo_task_12_resnet50v2',
     createTime: '2019-12-09 10:51:33',
     updatedTime: '2019-12-09 10:56:21',
     status: 'SUCCESS',
     right: '0.9674'
   },
   {
-    name: 'auto_algo_task_2_resnet50',
+    name: 'auto_algo_task_12_mobilenet',
     createTime: '2019-12-09 10:51:34',
     updatedTime: '2019-12-09 10:57:42',
     status: 'SUCCESS',
     right: '0.9620'
   },
   {
-    name: 'auto_algo_task_2_resnet50',
+    name: 'auto_algo_task_12_desnet121',
     createTime: '2019-12-09 10:51:36',
     updatedTime: '2019-12-09 11:10:16',
     status: 'SUCCESS',
@@ -384,7 +395,7 @@ const autoAlgoTaskTrainList = [
 
 const autoAlgoTaskServiceList = [
   {
-    name: 'auto_algo_task_2_resnet50',
+    name: 'auto_algo_task_12_resnet50v2',
     createTime: '2019-12-09 10:51:31',
     updatedTime: '2019-12-09 10:58:50',
     status: 'SERVING',

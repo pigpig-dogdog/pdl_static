@@ -56,8 +56,31 @@
             disable-transitions>{{scope.row.status}}</el-tag>
         </template>
       </el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            @click="openUpdateInstanceNumber(scope.$index, scope.row)"
+            type="primary"
+            plain>修改实例数目</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
+    <el-dialog
+      title="修改实例数目"
+      :visible.sync="dialogVisible"
+      width="30%">
+      <el-form label-width="80px">
+        <el-form-item label="实例数目">
+          <el-input-number v-model="instanceNumber" :min="1" :max="20"></el-input-number>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -72,6 +95,8 @@ export default {
   data () {
     return {
       total: 0,
+      dialogVisible: false,
+      instanceNumber: '',
       listQuery: {
         pageNumber: 1,
         pageSize: 20
@@ -104,6 +129,10 @@ export default {
           return this.algoServiceStatusList[i].tagType;
         }
       }
+    },
+    openUpdateInstanceNumber (index, row) {
+      this.instanceNumber = row.instanceNumber;
+      this.dialogVisible = true;
     }
   }
 };
