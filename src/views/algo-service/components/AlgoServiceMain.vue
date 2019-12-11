@@ -63,6 +63,11 @@
             @click="openUpdateInstanceNumber(scope.$index, scope.row)"
             type="primary"
             plain>修改实例数目</el-button>
+            <el-button
+            size="mini"
+            @click="uploadFileDialogVisible = true"
+            type="primary"
+            plain>更新代码/模型</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -81,6 +86,29 @@
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
       </span>
     </el-dialog>
+
+    <el-dialog
+      title="上传代码/模型"
+      :visible.sync="uploadFileDialogVisible"
+      width="40%"
+      center>
+      <div slot style="text-align: center">
+        <el-upload
+          class="upload-demo"
+          drag
+          action="no"
+          multiple>
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+          <div class="el-upload__tip" slot="tip">上传代码/模型zip压缩包</div>
+        </el-upload>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="uploadFileDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="uploadFileDialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -102,6 +130,7 @@ export default {
         pageSize: 20
       },
       list: [],
+      uploadFileDialogVisible: false,
       algoServiceStatusList: this.GLOBAL.algoServiceStatus
     };
   },
