@@ -13,7 +13,7 @@
       <el-table-column
         prop="creatorName"
         label="创建者"
-        width="180"
+        width="100"
         align=center>
       </el-table-column>
       <el-table-column
@@ -31,24 +31,25 @@
       <el-table-column
         prop="framework"
         label="深度学习框架"
-        width="200"
+        width="150"
         align=center>
       </el-table-column>
       <el-table-column
         prop="instanceNumber"
         label="实例数目"
-        width="200"
+        width="100"
         align=center>
       </el-table-column>
       <el-table-column
         prop="serviceUrl"
         label="服务地址"
-        width="200"
+        width="210"
         align=center>
       </el-table-column>
       <el-table-column
         prop="status"
         label="在线化服务状态"
+        width="200"
         align=center>
         <template slot-scope="scope">
           <el-tag
@@ -56,7 +57,7 @@
             disable-transitions>{{scope.row.status}}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" align=center>
         <template slot-scope="scope">
           <el-button
             size="mini"
