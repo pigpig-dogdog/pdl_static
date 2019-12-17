@@ -127,7 +127,7 @@ export default {
       instanceNumber: '',
       listQuery: {
         pageNumber: 1,
-        pageSize: 20
+        pageSize: 10
       },
       list: [],
       uploadFileDialogVisible: false,
