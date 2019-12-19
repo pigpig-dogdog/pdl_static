@@ -309,7 +309,7 @@ const algoServiceInfo = {
       label: '修改时间'
     },
     {
-      name: 'instanceNumber',
+      name: 'replicas',
       columnWidth: 200,
       label: '实例数目'
     },
@@ -399,7 +399,7 @@ const autoAlgoTaskServiceList = [
     createTime: '2019-12-09 10:51:31',
     updatedTime: '2019-12-09 10:58:50',
     status: 'SERVING',
-    instanceNumber: 2,
+    replicas: 2,
     serviceUrl: 'http://192.168.64.2:30336'
   }
 ];

@@ -15,8 +15,8 @@
       <el-form-item label="主类路径" prop="mainClassPath">
         <el-input v-model="createQuery.mainClassPath"></el-input>
       </el-form-item>
-      <el-form-item label="实例数目" prop="instanceNumber">
-        <el-input-number v-model="createQuery.instanceNumber" :min="0" :max="50"></el-input-number>
+      <el-form-item label="实例数目" prop="replicas">
+        <el-input-number v-model="createQuery.replicas" :min="0" :max="50"></el-input-number>
       </el-form-item>
       <el-form-item label="容器内存规格">
         <el-select v-model="a" placeholder="请选择容器内存规格">
@@ -60,7 +60,7 @@ export default {
         name: '',
         framework: '',
         mainClassPath: '',
-        instanceNumber: ''
+        replicas: ''
       },
       a: '',
       b: '',
@@ -78,7 +78,7 @@ export default {
         mainClassPath: [
           { required: true, message: '请指定主类路径', trigger: 'change' }
         ],
-        instanceNumber: [
+        replicas: [
           { required: true, message: '请选择实例个数', trigger: 'change' }
         ]
       }

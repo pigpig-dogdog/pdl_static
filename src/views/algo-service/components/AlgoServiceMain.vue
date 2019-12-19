@@ -35,7 +35,7 @@
         align=center>
       </el-table-column>
       <el-table-column
-        prop="instanceNumber"
+        prop="replicas"
         label="实例数目"
         width="100"
         align=center>
@@ -61,7 +61,7 @@
         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="openUpdateInstanceNumber(scope.$index, scope.row)"
+            @click="openUpdateReplicas(scope.$index, scope.row)"
             type="primary"
             plain>修改实例数目</el-button>
             <el-button
@@ -79,7 +79,7 @@
       width="30%">
       <el-form label-width="80px">
         <el-form-item label="实例数目">
-          <el-input-number v-model="instanceNumber" :min="1" :max="20"></el-input-number>
+          <el-input-number v-model="replicas" :min="1" :max="20"></el-input-number>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -125,7 +125,7 @@ export default {
     return {
       total: 0,
       dialogVisible: false,
-      instanceNumber: '',
+      replicas: '',
       listQuery: {
         pageNumber: 1,
         pageSize: 10
@@ -160,8 +160,8 @@ export default {
         }
       }
     },
-    openUpdateInstanceNumber (index, row) {
-      this.instanceNumber = row.instanceNumber;
+    openUpdateReplicas (index, row) {
+      this.replicas = row.replicas;
       this.dialogVisible = true;
     }
   }
