@@ -13,7 +13,7 @@
         <input type="file" @change="getZipFile"/>
       </el-form-item>
       <el-form-item label="主类路径" prop="mainClassPath">
-        <el-input v-model="createQuery.mainClassPath"></el-input>
+        <el-input v-model="createQuery.mainClassPath" placeholder="输入形如：result/"></el-input>
       </el-form-item>
       <el-form-item label="实例数目" prop="replicas">
         <el-input-number v-model="createQuery.replicas" :min="0" :max="50"></el-input-number>

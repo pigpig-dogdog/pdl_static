@@ -14,7 +14,13 @@ const actions = {
   getAlgoServiceList ({ commit }, query) {
     return new Promise((resolve, reject) => {
       getAlgoServiceList(query).then(response => {
-        commit('SET_ALGOSERVICE_LIST', response.data);
+        var list = response.data;
+        if (list.status === 'EXITED') {
+          list.statusText = '启动服务';
+        } else {
+          list.statusText = '停止服务';
+        }
+        commit('SET_ALGOSERVICE_LIST', list);
         resolve();
       }).catch(error => {
         reject(error);

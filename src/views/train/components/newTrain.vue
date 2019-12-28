@@ -2,7 +2,7 @@
   <div class="form">
     <el-form ref="form" :model="createQuery" :rules="rules" label-width="150px" class="demo-ruleForm">
       <el-form-item label="训练名称" prop="name">
-        <el-input v-model="createQuery.name"></el-input>
+        <el-input v-model="createQuery.name" placeholder="请输入训练名称"></el-input>
       </el-form-item>
       <el-form-item label="深度学习框架" prop="framework">
         <el-select v-model="createQuery.framework" placeholder="请选择深度学习框架">
@@ -13,10 +13,10 @@
         <input type="file" @change="getZipFile"/>
       </el-form-item>
       <el-form-item label="程序入口参数" prop="entryAndArgs">
-        <el-input v-model="createQuery.entryAndArgs "></el-input>
+        <el-input v-model="createQuery.entryAndArgs " placeholder="输入形如：python main.py --a=1 --b=2"></el-input>
       </el-form-item>
       <el-form-item label="结果目录文件路径" prop="resultDirPath">
-        <el-input v-model="createQuery.resultDirPath"></el-input>
+        <el-input v-model="createQuery.resultDirPath" placeholder="输入形如：result/"></el-input>
       </el-form-item>
       <el-form-item label="容器内存规格">
         <el-select v-model="a" placeholder="请选择容器内存规格">

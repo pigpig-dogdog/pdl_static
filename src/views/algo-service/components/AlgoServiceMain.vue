@@ -7,7 +7,7 @@
       <el-table-column
         prop="name"
         label="名称"
-        width="180"
+        width="120"
         align=center>
       </el-table-column>
       <el-table-column
@@ -41,6 +41,12 @@
         align=center>
       </el-table-column>
       <el-table-column
+        prop="availableReplicas"
+        label="可用实例数目"
+        width="150"
+        align=center>
+      </el-table-column>
+      <el-table-column
         prop="serviceUrl"
         label="服务地址"
         width="210"
@@ -63,18 +69,24 @@
             size="mini"
             @click="openUpdateReplicas(scope.$index, scope.row)"
             type="primary"
-            plain>修改实例数目</el-button>
+            plain>弹性伸缩</el-button>
             <el-button
             size="mini"
             @click="uploadFileDialogVisible = true"
             type="primary"
-            plain>更新代码/模型</el-button>
+            plain>滚动更新</el-button>
+            <template slot-scope="scope">
+              <el-button
+              size="mini"
+              type="primary"
+              plain>{{scope.row.statusText}}</el-button>
+            </template>
         </template>
       </el-table-column>
     </el-table>
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
     <el-dialog
-      title="修改实例数目"
+      title="弹性伸缩"
       :visible.sync="dialogVisible"
       width="30%">
       <el-form label-width="80px">

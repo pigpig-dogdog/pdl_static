@@ -286,7 +286,11 @@ const algoServiceInfo = {
     columnWidth: '',
     data: [
       {
-        title: '修改实例数目',
+        title: '弹性伸缩',
+        type: 'primary'
+      },
+      {
+        title: '滚动更新',
         type: 'primary'
       }
     ],
