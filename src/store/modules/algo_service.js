@@ -18,9 +18,11 @@ const actions = {
         if (list.status === 'EXITED') {
           list.statusText = '启动服务';
           list.api = 'start';
+          list.buttonType = 'primary';
         } else {
           list.statusText = '停止服务';
           list.api = 'stop';
+          list.buttonType = 'danger';
         }
         commit('SET_ALGOSERVICE_LIST', list);
         resolve();

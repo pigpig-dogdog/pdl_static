@@ -11,6 +11,12 @@ const algoTypes = [
   }
 ];
 
+const frameworkSearch = [
+  'TENSORFLOW',
+  'KERAS',
+  'PYTORCH'
+];
+
 const framework = [
   'TENSORFLOW_1_14_0',
   'TENSORFLOW_1_15_0',
@@ -423,6 +429,7 @@ export default {
   algoTypes,
   framework,
   LANGUAGE,
+  frameworkSearch,
   trainStatus,
   memory,
   cpuCore,

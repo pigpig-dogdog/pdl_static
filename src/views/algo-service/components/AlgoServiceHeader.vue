@@ -20,7 +20,7 @@
           <el-select v-model="listQuery.framework" placeholder="请选择深度学习框架" style="width:100%">
             <el-option label="全部框架" value=""></el-option>
             <el-option
-              v-for="item in GLOBAL.framework"
+              v-for="item in GLOBAL.frameworkSearch"
               :key="item"
               :label="item"
               :value="item">

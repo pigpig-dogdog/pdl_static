@@ -75,13 +75,11 @@
             @click="uploadFileDialogVisible = true"
             type="primary"
             plain>滚动更新</el-button>
-            <template slot-scope="scope">
-              <el-button
-              size="mini"
-              type="primary"
-              @click="controllAlgoService(scope.row)"
-              plain>{{scope.row.statusText}}</el-button>
-            </template>
+            <el-button
+            size="mini"
+            :type=scope.row.buttonType
+            @click="controlAlgoService(scope.row)"
+            plain>{{scope.row.statusText}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -180,7 +178,7 @@ export default {
       this.serviceId = row.id;
       this.dialogVisible = true;
     },
-    controllAlgoService (row) {
+    controlAlgoService (row) {
       controllAlgoService(row.id, row.api);
     },
     handleUpdateReplicas () {
