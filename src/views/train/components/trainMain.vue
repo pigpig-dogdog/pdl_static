@@ -125,7 +125,7 @@ export default {
     getList () {
       this.$store.dispatch('train/getTrainList', this.listQuery);
     },
-    openTrainLog (index, row) {
+    goTrainLog (index, row) {
       this.trainName = row.name;
       this.trainLogDialogVisible = true;
       getTrainLog(row.id).then(response => {
