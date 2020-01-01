@@ -17,8 +17,10 @@ const actions = {
         var list = response.data;
         if (list.status === 'EXITED') {
           list.statusText = '启动服务';
+          list.api = 'start';
         } else {
           list.statusText = '停止服务';
+          list.api = 'stop';
         }
         commit('SET_ALGOSERVICE_LIST', list);
         resolve();

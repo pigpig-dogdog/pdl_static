@@ -4,6 +4,11 @@
       <el-form-item label="在线化服务名称" prop="name">
         <el-input v-model="createQuery.name"></el-input>
       </el-form-item>
+      <el-form-item label="语言" prop="language">
+        <el-select v-model="createQuery.framework" placeholder="请选择语言">
+          <el-option v-for="data in GLOBAL.LANGUAGE" :key="data" :label="data" :value="data"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="深度学习框架" prop="framework">
         <el-select v-model="createQuery.framework" placeholder="请选择深度学习框架">
           <el-option v-for="data in GLOBAL.framework" :key="data" :label="data" :value="data"></el-option>
@@ -60,7 +65,8 @@ export default {
         name: '',
         framework: '',
         mainClassPath: '',
-        replicas: ''
+        replicas: '',
+        language: ''
       },
       a: '',
       b: '',
@@ -74,6 +80,9 @@ export default {
         ],
         framework: [
           { required: true, message: '请选择深度学习框架', trigger: 'change' }
+        ],
+        language: [
+          { required: true, message: '请选择语言', trigger: 'change' }
         ],
         mainClassPath: [
           { required: true, message: '请指定主类路径', trigger: 'change' }

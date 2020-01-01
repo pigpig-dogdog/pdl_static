@@ -79,6 +79,7 @@
               <el-button
               size="mini"
               type="primary"
+              @click="controllAlgoService(scope.row)"
               plain>{{scope.row.statusText}}</el-button>
             </template>
         </template>
@@ -96,7 +97,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="handleUpdateReplicas">确 定</el-button>
       </span>
     </el-dialog>
 
@@ -127,6 +128,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { controllAlgoService, updateReplicas, updateCodeModel } from '@/api/algo-service';
 import Pagination from '@/components/Pagination';
 export default {
   name: 'AlgoServiceMain',
@@ -138,6 +140,7 @@ export default {
       total: 0,
       dialogVisible: false,
       replicas: '',
+      serviceId: '',
       listQuery: {
         pageNumber: 1,
         pageSize: 10
@@ -174,7 +177,17 @@ export default {
     },
     openUpdateReplicas (index, row) {
       this.replicas = row.replicas;
+      this.serviceId = row.id;
       this.dialogVisible = true;
+    },
+    controllAlgoService (row) {
+      controllAlgoService(row.id, row.api);
+    },
+    handleUpdateReplicas () {
+      updateReplicas(this.serviceId, this.replicas);
+    },
+    updateCodeModel () {
+      updateCodeModel();
     }
   }
 };

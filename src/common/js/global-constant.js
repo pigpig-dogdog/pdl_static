@@ -11,8 +11,19 @@ const algoTypes = [
   }
 ];
 
-const framework = ['TENSORFLOW', 'KERAS', 'PYTORCH', 'MXNET', 'CAFFE'];
-
+const framework = [
+  'TENSORFLOW_1_14_0',
+  'TENSORFLOW_1_15_0',
+  'TENSORFLOW_2_0_0',
+  'KERAS_2_3_1',
+  'PYTORCH_1_3_1'
+];
+const LANGUAGE = [
+  'PYTHON_2_7',
+  'PYTHON_3_5',
+  'PYTHON_3_6',
+  'PYTHON_3_7'
+];
 const trainStatus = [
   {
     label: '等待',
@@ -411,6 +422,7 @@ const autoAlgoTaskServiceList = [
 export default {
   algoTypes,
   framework,
+  LANGUAGE,
   trainStatus,
   memory,
   cpuCore,

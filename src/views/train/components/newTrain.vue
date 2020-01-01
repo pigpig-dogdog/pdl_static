@@ -4,6 +4,11 @@
       <el-form-item label="训练名称" prop="name">
         <el-input v-model="createQuery.name" placeholder="请输入训练名称"></el-input>
       </el-form-item>
+      <el-form-item label="语言" prop="language">
+        <el-select v-model="createQuery.framework" placeholder="请选择语言">
+          <el-option v-for="data in GLOBAL.LANGUAGE" :key="data" :label="data" :value="data"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="深度学习框架" prop="framework">
         <el-select v-model="createQuery.framework" placeholder="请选择深度学习框架">
           <el-option v-for="data in GLOBAL.framework" :key="data" :label="data" :value="data"></el-option>
@@ -60,7 +65,8 @@ export default {
         name: '',
         framework: '',
         entryAndArgs: '',
-        resultDirPath: ''
+        resultDirPath: '',
+        language: ''
       },
       a: '',
       b: '',
@@ -71,6 +77,9 @@ export default {
       rules: {
         name: [
           { required: true, message: '请输入训练名称', trigger: 'blur' }
+        ],
+        language: [
+          { required: true, message: '请选择语言', trigger: 'change' }
         ],
         framework: [
           { required: true, message: '请选择训练深度学习框架', trigger: 'change' }

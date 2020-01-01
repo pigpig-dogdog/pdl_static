@@ -19,3 +19,42 @@ export function createAlgoService (query, data) {
     data: data
   });
 }
+
+export function controllAlgoService (serviceId, operation) {
+  return request({
+    url: '/algo_deploy/' + operation,
+    method: 'post',
+    params: serviceId,
+    headers: {
+      'Content-Type': 'x-www-form-urlencoded;'
+    }
+  });
+}
+
+export function updateReplicas (serviceId, replicas) {
+  return request({
+    url: '/algo_deploy/scale',
+    method: 'post',
+    params: {
+      id: serviceId,
+      replicas: replicas
+    },
+    headers: {
+      'Content-Type': 'x-www-form-urlencoded;'
+    }
+  });
+}
+
+export function updateCodeModel (serviceId, mainClassPath) {
+  return request({
+    url: '/algo_deploy/updateCodeModel',
+    method: 'post',
+    params: {
+      id: serviceId,
+      mainClassPath: mainClassPath
+    },
+    headers: {
+      'Content-Type': 'multipart/form-data;'
+    }
+  });
+}
