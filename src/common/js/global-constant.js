@@ -377,7 +377,7 @@ const AutoAlgoTaskInfo = {
   api: '/auto_algo_task/list',
   status: {
     name: 'status',
-    statusList: 'autoAlgoTaskStatus',
+    statusList: 'AutoAlgoTaskStatus',
     columnWidth: 200,
     label: '任务状态'
   },
@@ -414,7 +414,7 @@ const AutoAlgoTaskInfo = {
     },
     {
       name: 'status',
-      columnWidth: 200,
+      columnWidth: '',
       label: '状态'
     }
   ]
