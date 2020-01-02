@@ -15,14 +15,15 @@ const actions = {
     return new Promise((resolve, reject) => {
       getAlgoServiceList(query).then(response => {
         var list = response.data;
-        if (list.status === 'EXITED') {
-          list.statusText = '启动服务';
-          list.api = 'start';
-          list.buttonType = 'primary';
-        } else {
-          list.statusText = '停止服务';
-          list.api = 'stop';
-          list.buttonType = 'danger';
+        var statusList = this.GLOBAL.algoServiceStatus;
+        for (var i = 0; i < list.length; i++) {
+          for (var j = 0; j < statusList.length; j++) {
+            if (list[i].status === statusList[j].value) {
+              list[i].statusText = statusList[j].statusText;
+              list[i].api = statusList[j].api;
+              list[i].buttonType = statusList[j].tagType;
+            }
+          }
         }
         commit('SET_ALGOSERVICE_LIST', list);
         resolve();

@@ -20,7 +20,7 @@ export function createAlgoService (query, data) {
   });
 }
 
-export function controllAlgoService (serviceId, operation) {
+export function controlAlgoService (serviceId, operation) {
   return request({
     url: '/algo_deploy/' + operation,
     method: 'post',

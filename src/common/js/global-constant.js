@@ -70,12 +70,16 @@ const algoServiceStatus = [
   {
     label: '运行中',
     value: 'SERVING',
-    tagType: ''
+    tagType: '',
+    statusText: '停止服务',
+    api: 'start'
   },
   {
     label: '失败',
     value: 'EXITED',
-    tagType: 'danger'
+    tagType: 'danger',
+    statusText: '启动服务',
+    api: 'stop'
   }
 ];
 
