@@ -125,7 +125,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { controllAlgoService, updateReplicas, updateCodeModel } from '@/api/algo-service';
+import { controlAlgoService, updateReplicas, updateCodeModel } from '@/api/algo-service';
 import Pagination from '@/components/Pagination';
 export default {
   name: 'AlgoServiceMain',
@@ -178,7 +178,7 @@ export default {
       this.dialogVisible = true;
     },
     controlAlgoService (row) {
-      controllAlgoService(row.id, row.api);
+      controlAlgoService(row.id, row.api);
     },
     handleUpdateReplicas () {
       updateReplicas(this.serviceId, this.replicas);
