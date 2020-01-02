@@ -156,6 +156,16 @@ export default {
     algoServiceList: function (val) {
       this.total = val.totalItemsNumber;
       this.list = val.list;
+      var statusList = this.GLOBAL.algoServiceStatus;
+      for (var i = 0; i < this.list.length; i++) {
+        for (var j = 0; j < statusList.length; j++) {
+          if (this.list[i].status === statusList[j].value) {
+            this.list[i].statusText = statusList[j].statusText;
+            this.list[i].api = statusList[j].api;
+            this.list[i].buttonType = statusList[j].tagType;
+          }
+        }
+      }
     }
   },
   mounted () {
