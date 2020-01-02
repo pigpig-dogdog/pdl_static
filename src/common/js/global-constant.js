@@ -95,6 +95,7 @@ const algoServiceStatus = [
     label: '运行中',
     value: 'SERVING',
     tagType: '',
+    buttonType: 'danger',
     statusText: '停止服务',
     api: 'start'
   },
@@ -102,6 +103,7 @@ const algoServiceStatus = [
     label: '失败',
     value: 'EXITED',
     tagType: 'danger',
+    buttonType: 'primary',
     statusText: '启动服务',
     api: 'stop'
   }

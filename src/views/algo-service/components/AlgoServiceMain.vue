@@ -66,11 +66,13 @@
       <el-table-column label="操作" align=center>
         <template slot-scope="scope">
           <el-button
+            v-if="scope.row.status === 'SERVING'"
             size="mini"
             @click="openUpdateReplicas(scope.$index, scope.row)"
             type="primary"
             plain>弹性伸缩</el-button>
             <el-button
+            v-if="scope.row.status === 'SERVING'"
             size="mini"
             @click="uploadFileDialogVisible = true"
             type="primary"
@@ -162,7 +164,7 @@ export default {
           if (this.list[i].status === statusList[j].value) {
             this.list[i].statusText = statusList[j].statusText;
             this.list[i].api = statusList[j].api;
-            this.list[i].buttonType = statusList[j].tagType;
+            this.list[i].buttonType = statusList[j].buttonType;
           }
         }
       }
