@@ -8,7 +8,7 @@
     <el-table
       :data="list"
       stripe
-      height="300"
+      height=1000px
       style="width: 100%">
       <el-table-column
         v-for="data in tableAttributes"
@@ -50,11 +50,15 @@
 </template>
 
 <script>
-// import { getList } from '@/api/common';
+import { getList } from '@/api/common';
 export default {
   name: 'ShortTable',
   props: {
     infoName: {
+      type: String,
+      required: true
+    },
+    tableHeight: {
       type: String,
       required: true
     }
@@ -77,11 +81,11 @@ export default {
       console.log(this.info.status);
       this.statusInfo = this.info.status ? this.info.status : '';
       this.operations = this.info.operations ? this.info.operations : '';
-      // TODO：本地数据测试
-      this.list = this.GLOBAL[this.info.data];
-      // getList(this.info.api).then(response => {
-      //   this.list = response.data;
-      // });
+      // 本地数据测试
+      // this.list = this.GLOBAL[this.info.data];
+      getList(this.info.api).then(response => {
+        this.list = response.data;
+      });
     },
     getTagColor (status, list) {
       for (var i = 0; i < list.length; i++) {

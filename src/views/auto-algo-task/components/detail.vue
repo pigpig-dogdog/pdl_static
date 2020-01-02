@@ -11,7 +11,7 @@
       </el-col>
     </el-row>
     <div v-if="datasetId == 2">
-      <short-table v-for="data in AutoAlgoTaskDetailTableList" :key="data.id" :infoName="data.info"></short-table>
+      <short-table v-for="data in AutoAlgoTaskDetailTableList" :key="data.id" :infoName="data.info" :tableHeight="300"></short-table>
     </div>
   </div>
 </template>

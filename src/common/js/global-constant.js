@@ -61,6 +61,30 @@ const trainStatus = [
   }
 ];
 
+const AutoAlgoTaskStatus = [
+  {
+    label: '运行中',
+    value: 'RUNNING',
+    tagType: '',
+    resultBtnType: 'info',
+    resultText: '暂无结果'
+  },
+  {
+    label: '成功',
+    value: 'SUCCESS',
+    tagType: 'success',
+    resultBtnType: 'success',
+    resultText: '结果下载'
+  },
+  {
+    label: '失败',
+    value: 'FAILED',
+    tagType: 'danger',
+    resultBtnType: 'success',
+    resultText: '结果下载'
+  }
+];
+
 const algoServiceStatus = [
   {
     label: '等待',
@@ -346,6 +370,56 @@ const algoServiceInfo = {
   ]
 };
 
+const AutoAlgoTaskInfo = {
+  id: 'autoAlgoTask',
+  name: '自助式算法任务',
+  data: 'autoAlgoTaskTrainList',
+  api: '/auto_algo_task/list',
+  status: {
+    name: 'status',
+    statusList: 'autoAlgoTaskStatus',
+    columnWidth: 200,
+    label: '任务状态'
+  },
+  attributes: [
+    {
+      name: 'name',
+      columnWidth: 300,
+      label: '名称'
+    },
+    {
+      name: 'createTime',
+      columnWidth: 200,
+      label: '创建时间'
+    },
+    {
+      name: 'modifyTime',
+      columnWidth: 200,
+      label: '更新时间'
+    },
+    {
+      name: 'creatorName',
+      columnWidth: 200,
+      label: '创建者'
+    },
+    {
+      name: 'datasetName',
+      columnWidth: 200,
+      label: '数据集名称'
+    },
+    {
+      name: 'algoType',
+      columnWidth: 200,
+      label: '算法类型'
+    },
+    {
+      name: 'status',
+      columnWidth: 200,
+      label: '状态'
+    }
+  ]
+};
+
 const memory = ['4G', '8G', '16G'];
 const cpuSpeci = ['intel i3', 'intel i5', 'intel i7'];
 const cpuCore = ['1核', '2核', '4核'];
@@ -447,5 +521,7 @@ export default {
   testClassifyImagesList,
   autoAlgoTaskServiceList,
   autoAlgoTaskTrainList, // TODO:test list ,之后要删掉
-  AutoAlgoTaskDetailTableList
+  AutoAlgoTaskDetailTableList,
+  AutoAlgoTaskStatus,
+  AutoAlgoTaskInfo
 };
