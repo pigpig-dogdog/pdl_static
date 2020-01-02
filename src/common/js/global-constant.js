@@ -411,11 +411,6 @@ const AutoAlgoTaskInfo = {
       name: 'algoType',
       columnWidth: 200,
       label: '算法类型'
-    },
-    {
-      name: 'status',
-      columnWidth: '',
-      label: '状态'
     }
   ]
 };
