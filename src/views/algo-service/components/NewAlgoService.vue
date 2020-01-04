@@ -5,7 +5,7 @@
         <el-input v-model="createQuery.name"></el-input>
       </el-form-item>
       <el-form-item label="语言" prop="language">
-        <el-select v-model="createQuery.framework" placeholder="请选择语言">
+        <el-select v-model="createQuery.language" placeholder="请选择语言">
           <el-option v-for="data in GLOBAL.LANGUAGE" :key="data" :label="data" :value="data"></el-option>
         </el-select>
       </el-form-item>
