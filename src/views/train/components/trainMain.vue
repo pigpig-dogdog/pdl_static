@@ -97,7 +97,7 @@ export default {
       total: 0,
       listQuery: {
         pageNumber: 1,
-        pageSize: 10
+        pageSize: 15
       },
       list: [],
       trainLogDialogVisible: false,

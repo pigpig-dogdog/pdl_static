@@ -142,7 +142,7 @@ export default {
       serviceId: '',
       listQuery: {
         pageNumber: 1,
-        pageSize: 10
+        pageSize: 15
       },
       list: [],
       uploadFileDialogVisible: false,

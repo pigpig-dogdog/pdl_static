@@ -53,11 +53,11 @@ export default {
       list: [],
       total: 0,
       listQuery: {
-        framework: '',
-        creatorName: '',
-        name: '', // 训练名称
+        framework: null,
+        creatorName: null,
+        name: null, // 训练名称
         pageNumber: 1,
-        pageSize: 20
+        pageSize: 15
       }
     };
   },
