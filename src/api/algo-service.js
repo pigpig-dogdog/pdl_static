@@ -24,7 +24,9 @@ export function controlAlgoService (serviceId, operation) {
   return request({
     url: '/algo_deploy/' + operation,
     method: 'post',
-    params: serviceId,
+    params: {
+      id: serviceId
+    },
     headers: {
       'Content-Type': 'x-www-form-urlencoded;'
     }
