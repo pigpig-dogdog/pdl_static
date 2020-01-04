@@ -135,6 +135,13 @@ export default new Router({
           component: () => import('@/views/auto-algo-task/index'),
           name: 'AutoAlgoTask',
           meta: { title: '自助算法任务', icon: 'auto-algo-task' }
+        },
+        {
+          path: 'detail/:id',
+          component: () => import('@/views/auto-algo-task/components/detail'),
+          name: 'AutoAlgoTaskDetail',
+          hidden: true,
+          meta: { title: '自助算法任务详情', icon: 'auto-algo-task' }
         }
       ]
     }

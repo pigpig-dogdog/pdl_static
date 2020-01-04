@@ -10,15 +10,18 @@
       stripe
       height=1000px
       style="width: 100%">
-      <el-table-column
-        v-for="data in tableAttributes"
-        :key="data.name"
-        :prop="data.name"
-        :label="data.label"
-        :width="data.columnWidth"
-        :fixed="data.fixBoolean"
-        align=center>
-      </el-table-column>
+      <template slot-scope="scope">
+        <el-table-column
+          v-for="item in tableAttributes"
+          :key="item.name"
+          :prop="item.name"
+          :label="item.label"
+          :width="item.columnWidth"
+          :fixed="item.fixBoolean"
+          @click="judgeJump(item, scope.row)"
+          align=center>
+        </el-table-column>
+      </template>
       <el-table-column
         v-if="statusInfo"
         :prop="statusInfo.name"
@@ -92,6 +95,11 @@ export default {
         if (status === list[i].value) {
           return list[i].tagType;
         }
+      }
+    },
+    judgeJump (columnInfo, data) {
+      if (columnInfo.jump) {
+        this.$router.push(columnInfo.jump + data[columnInfo.jumpUrlId]);
       }
     }
   }

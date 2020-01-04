@@ -387,7 +387,9 @@ const AutoAlgoTaskInfo = {
     {
       name: 'name',
       columnWidth: 300,
-      label: '名称'
+      label: '名称',
+      jumpUrlId: 'id',
+      jump: '/auto-algo-task/detail/'
     },
     {
       name: 'createTime',
@@ -407,7 +409,9 @@ const AutoAlgoTaskInfo = {
     {
       name: 'datasetName',
       columnWidth: 200,
-      label: '数据集名称'
+      label: '数据集名称',
+      jumpUrlId: 'datasetId',
+      jump: '/datasets/detail/'
     },
     {
       name: 'algoType',

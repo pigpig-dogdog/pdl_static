@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <short-table infoName="AutoAlgoTaskInfo" tableHeight="100%"></short-table>
+      <short-table infoName="AutoAlgoTaskInfo" tableHeight="1000px"></short-table>
     </div>
   </div>
 </template>
