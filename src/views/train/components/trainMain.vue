@@ -51,7 +51,7 @@
         <template slot-scope="scope">
           <el-button
             size="mini"
-            @click="openTrainLog(scope.$index, scope.row)"
+            @click="goTrainLog(scope.$index, scope.row)"
             type="primary"
             plain>查看日志</el-button>
             <el-button
@@ -64,28 +64,12 @@
     </el-table>
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
 
-    <!-- 训练日志弹窗 -->
-    <div class="train-log">
-      <el-dialog
-        title="训练日志"
-        :visible.sync="trainLogDialogVisible"
-        width="40%">
-        <span slot="title" class="dialog-title">
-          <svg-icon icon-class = 'log' style="font-size:20px"/>
-          <span>训练日志</span>
-        </span>
-        <el-row v-for="(data, index) in trainLog" :key="data" class="logRow">
-          <el-col :span="1" style="text-align:right;">{{ index + 1 }}</el-col>
-          <el-col :span="18" style="padding-left:10px">{{ data }}</el-col>
-        </el-row>
-      </el-dialog>
-    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import { getTrainLog, getTrainResult } from '@/api/train';
+import { getTrainResult } from '@/api/train';
 import Pagination from '@/components/Pagination';
 export default {
   name: 'TrainMain',
@@ -126,12 +110,7 @@ export default {
       this.$store.dispatch('train/getTrainList', this.listQuery);
     },
     goTrainLog (index, row) {
-      this.trainName = row.name;
-      this.trainLogDialogVisible = true;
-      getTrainLog(row.id).then(response => {
-        var data = response.data;
-        this.trainLog = data.split('\n');
-      });
+      this.$router.push('log/' + row.id);
     },
     getTagColor (status) {
       for (var i = 0; i < this.trainStatusList.length; i++) {

@@ -87,7 +87,7 @@ export default new Router({
           meta: { title: '新增训练' }
         },
         {
-          path: 'log',
+          path: 'log/:id',
           component: () => import('@/views/train/components/TrainLog'),
           name: 'log',
           hidden: true,

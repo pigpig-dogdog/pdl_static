@@ -109,6 +109,19 @@ const algoServiceStatus = [
   }
 ];
 
+// const AlgoService = {
+//   Waiting: {
+//     label: '等待',
+//     value: 'WAITING',
+//     tagType: 'warning'
+//   },
+//   Serving: {
+//     label: 'fusasa',
+//     value: 'sadwq',
+//     tagType: 'dqwdwq'
+//   }
+// };
+
 // TODO:将数组拆分为单个对象
 const k8sMonitorList = [
   {
@@ -380,15 +393,16 @@ const AutoAlgoTaskInfo = {
   status: {
     name: 'status',
     statusList: 'AutoAlgoTaskStatus',
-    columnWidth: 200,
+    columnWidth: '',
     label: '任务状态'
   },
   attributes: [
     {
       name: 'name',
-      columnWidth: 300,
+      columnWidth: 350,
       label: '名称',
       jumpUrlId: 'id',
+      jumpTitle: '点击查看自助式算法任务详情',
       jump: '/auto-algo-task/detail/'
     },
     {
@@ -408,9 +422,10 @@ const AutoAlgoTaskInfo = {
     },
     {
       name: 'datasetName',
-      columnWidth: 200,
+      columnWidth: 250,
       label: '数据集名称',
       jumpUrlId: 'datasetId',
+      jumpTitle: '点击查看数据集详情',
       jump: '/datasets/detail/'
     },
     {

@@ -7,7 +7,7 @@
       <el-table-column
         prop="name"
         label="名称"
-        width="120"
+        width="300"
         align=center>
       </el-table-column>
       <el-table-column
@@ -65,18 +65,18 @@
       </el-table-column>
       <el-table-column label="操作" align=center>
         <template slot-scope="scope">
+          <div v-if="scope.row.status === 'SERVING'" >
           <el-button
-            v-if="scope.row.status === 'SERVING'"
             size="mini"
             @click="openUpdateReplicas(scope.$index, scope.row)"
             type="primary"
-            plain>弹性伸缩</el-button>
+            plain>弹性伸缩</el-button><br>
             <el-button
-            v-if="scope.row.status === 'SERVING'"
             size="mini"
             @click="uploadFileDialogVisible = true"
             type="primary"
-            plain>滚动更新</el-button>
+            plain>滚动更新</el-button><br>
+          </div>
             <el-button
             size="mini"
             :type=scope.row.buttonType

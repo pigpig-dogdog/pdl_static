@@ -10,18 +10,18 @@
       stripe
       height=1000px
       style="width: 100%">
-      <template slot-scope="scope">
-        <el-table-column
-          v-for="item in tableAttributes"
-          :key="item.name"
-          :prop="item.name"
-          :label="item.label"
-          :width="item.columnWidth"
-          :fixed="item.fixBoolean"
-          @click="judgeJump(item, scope.row)"
-          align=center>
-        </el-table-column>
-      </template>
+      <el-table-column
+        v-for="item in tableAttributes"
+        :key="item.name"
+        :prop="item.name"
+        :label="item.label"
+        :width="item.columnWidth"
+        :fixed="item.fixBoolean"
+        align=center>
+        <template slot-scope="scope">
+          <p @click="judgeJump(item, scope.row)" :title="item.jumpTitle" :class="item.jump? 'jumpCell': ''">{{scope.row[item.name]}}</p>
+        </template>
+      </el-table-column>
       <el-table-column
         v-if="statusInfo"
         :prop="statusInfo.name"
@@ -69,6 +69,7 @@ export default {
   data () {
     return {
       list: [],
+      jumpCellClass: '',
       info: this.GLOBAL[this.infoName],
       tableAttributes: [],
       statusInfo: '',
@@ -117,5 +118,9 @@ export default {
 .titleText {
   font-size: 18px;
   padding: 10px;
+}
+.jumpCell {
+  text-decoration:underline;
+  color:#409eff
 }
 </style>
