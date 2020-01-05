@@ -66,16 +66,16 @@
       <el-table-column label="操作" align=center>
         <template slot-scope="scope">
           <div v-if="scope.row.status === 'SERVING'" >
-          <el-button
-            size="mini"
-            @click="openUpdateReplicas(scope.$index, scope.row)"
-            type="primary"
-            plain>弹性伸缩</el-button><br>
             <el-button
-            size="mini"
-            @click="uploadFileDialogVisible = true"
-            type="primary"
-            plain>滚动更新</el-button><br>
+              size="mini"
+              @click="openUpdateReplicas(scope.$index, scope.row)"
+              type="primary"
+              plain>弹性伸缩</el-button><br>
+              <el-button
+              size="mini"
+              @click="openUploadFileDialog(scope.row)"
+              type="primary"
+              plain>滚动更新</el-button><br>
           </div>
             <el-button
             size="mini"
@@ -86,11 +86,12 @@
       </el-table-column>
     </el-table>
     <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
+
     <el-dialog
       title="弹性伸缩"
       :visible.sync="dialogVisible"
       width="30%">
-      <el-form label-width="80px">
+      <el-form label-width="120px">
         <el-form-item label="实例数目">
           <el-input-number v-model="replicas" :min="1" :max="20"></el-input-number>
         </el-form-item>
@@ -110,15 +111,26 @@
         <el-upload
           class="upload-demo"
           drag
-          action="no">
+          ref="upload"
+          action="no"
+          :auto-upload="false"
+          :limit="1"
+          :file-list="fileList"
+          :before-close="closeUploadFileDialog"
+          :http-request="uploadCodeModel">
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
           <div class="el-upload__tip" slot="tip">上传代码/模型zip压缩包</div>
         </el-upload>
+        <el-form label-width="150px" style="margin-top: 10px">
+        <el-form-item label="主类路径">
+          <el-input v-model="mainClassPath"></el-input>
+        </el-form-item>
+        </el-form>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="uploadFileDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="uploadFileDialogVisible = false">确 定</el-button>
+        <el-button @click="closeUploadFileDialog">取 消</el-button>
+        <el-button type="primary" @click="handleUploadCodeModel()">确 定</el-button>
       </span>
     </el-dialog>
 
@@ -137,6 +149,7 @@ export default {
   data () {
     return {
       total: 0,
+      fileList: [],
       dialogVisible: false,
       replicas: '',
       serviceId: '',
@@ -145,6 +158,7 @@ export default {
         pageSize: 15
       },
       list: [],
+      mainClassPath: null,
       uploadFileDialogVisible: false,
       algoServiceStatusList: this.GLOBAL.algoServiceStatus
     };
@@ -190,13 +204,45 @@ export default {
       this.dialogVisible = true;
     },
     controlAlgoService (row) {
-      controlAlgoService(row.id, row.api);
+      this.$confirm('在线化服务名称：' + row.name, '确定' + row.statusText + '?', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        controlAlgoService(row.id, row.api).then((response) => {
+          this.getList();
+        });
+        this.$message({
+          type: 'success',
+          message: row.statusText + '成功!'
+        });
+      });
     },
     handleUpdateReplicas () {
       updateReplicas(this.serviceId, this.replicas);
     },
-    updateCodeModel () {
-      updateCodeModel();
+    closeUploadFileDialog () {
+      this.$refs.upload.clearFiles();
+      this.uploadFileDialogVisible = false;
+    },
+    openUploadFileDialog (row) {
+      this.fileList = [];
+      this.uploadFileDialogVisible = true;
+      this.serviceId = row.id;
+      this.mainClassPath = row.mainClassPath;
+    },
+    uploadCodeModel (data) {
+      const formData = new FormData();
+      formData.append('codeZipFile', data.file);
+      updateCodeModel(this.serviceId, this.mainClassPath, formData).then(response => {
+        data.onSuccess();
+        this.$refs.upload.clearFiles();
+      }).catch(response => {
+        data.onError();
+      });
+    },
+    handleUploadCodeModel () {
+      this.$refs.upload.submit();
     }
   }
 };

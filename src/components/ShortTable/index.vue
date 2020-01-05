@@ -121,6 +121,7 @@ export default {
 }
 .jumpCell {
   text-decoration:underline;
-  color:#409eff
+  color: #409eff;
+  cursor: pointer;
 }
 </style>

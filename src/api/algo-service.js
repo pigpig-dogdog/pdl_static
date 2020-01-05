@@ -47,10 +47,11 @@ export function updateReplicas (serviceId, replicas) {
   });
 }
 
-export function updateCodeModel (serviceId, mainClassPath) {
+export function updateCodeModel (serviceId, mainClassPath, codeModel) {
   return request({
     url: '/algo_deploy/updateCodeModel',
     method: 'post',
+    data: codeModel,
     params: {
       id: serviceId,
       mainClassPath: mainClassPath
