@@ -25,7 +25,7 @@ export function createDataset (data) {
 
 export function getImagesList (query, id) {
   return request({
-    url: '/dataset/' + id + '/listImages',
+    url: '/dataset/' + id + '/getNextBatchUnannotatedImages',
     method: 'get',
     params: query
   });
@@ -43,7 +43,7 @@ export function uploadImage (query, id, data) {
 // 数据标注
 export function getClassifyImagesList (query, id) {
   return request({
-    url: '/dataset/' + id + '/listImages',
+    url: '/dataset/' + id + '/getNextBatchUnannotatedImages',
     method: 'get',
     params: query
   });

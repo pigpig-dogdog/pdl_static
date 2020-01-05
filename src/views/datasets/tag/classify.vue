@@ -29,7 +29,7 @@
       <!-- 图片部分 -->
       <el-main align="middle" justify="center">
         <el-row>
-          <el-col :span="5" v-for="data in testClassifyImagesList" :key="data.id" :offset="1">
+          <el-col :span="5" v-for="data in imagesList" :key="data.id" :offset="1">
             <el-card :body-style="{ padding: '0px' }">
               <div class="clearfix" slot="header" style="height:40px;line-height:40px">
                 <span style="font-size:30px;color:#409eff" v-if="data.tag">{{ data.tag }}</span>
@@ -54,7 +54,14 @@ export default {
       tagsList: this.$store.state.datasets.tagsList,
       tag: '',
       nowTag: '',
-      testClassifyImagesList: []
+      datasetId: this.$route.params.id,
+      list: [],
+      imagesList: [],
+      listQuery: {
+        batchSize: 8,
+        clusterNumber: 0,
+        startImageId: 0
+      }
     };
   },
   mounted () {
@@ -66,9 +73,10 @@ export default {
       this.testClassifyImagesList.forEach(function (item) {
         item.tag = '';
       });
-      getClassifyImagesList().then(response => {
-        this.testClassifyImagesList = response.data;
-        this.testClassifyImagesList.forEach(function (item) {
+      getClassifyImagesList(this.listQuery, this.datasetId).then(response => {
+        this.list = response.data;
+        this.imagesList = this.list.list;
+        this.list.forEach(function (item) {
           item.tag = '待标注';
         });
       });
