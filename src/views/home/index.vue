@@ -15,7 +15,7 @@
     <module-rect v-for="item in modules" :key="item.name" :module="item"></module-rect>
 
     <!-- 纵向排列 -->
-    <div class="footer">
+    <!-- <div class="footer">
       <div class="title">
         <h2>支持的深度学习框架</h2>
       </div>
@@ -28,12 +28,12 @@
       <div class="imgBox">
         <img src="@/assets/HomeLogo/keras.png" class="imgStyle"/>
       </div>
-    </div>
+    </div> -->
 
     <!-- 横向排列 -->
-    <!-- <div class="footer">
+    <div class="footer">
       <div class="title">
-        <h2>支持的深度学习框架</h2>
+        <h1>支持的深度学习框架</h1>
       </div>
       <div class="title">
         <el-row :gutter="20">
@@ -54,7 +54,7 @@
           </el-col>
         </el-row>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -80,13 +80,14 @@ export default {
   }
   .title {
     text-align: center;
+    padding: 15px;
   }
   .imgBox {
     text-align: center;
     margin: 15px;
   }
   .footer {
-    margin: 20px 0 50px 0;
+    margin: 30px 0 50px 0;
   }
   .pdlLogo {
     display: flex;

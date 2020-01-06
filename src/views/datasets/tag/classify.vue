@@ -22,7 +22,7 @@
             <span>操作</span>
           </div>
           <div class="text item">
-            <el-button type="success" style="width:100%">提交标注</el-button>
+            <el-button type="success" style="width:100%" @click="handleSubmit()">提交标注</el-button>
           </div>
         </el-card>
       </el-aside>
@@ -32,7 +32,7 @@
           <el-col :span="5" v-for="data in imagesList" :key="data.id" :offset="1">
             <el-card :body-style="{ padding: '0px' }">
               <div class="clearfix" slot="header" style="height:40px;line-height:40px">
-                <span style="font-size:30px;color:#409eff" v-if="data.tag">{{ data.tag }}</span>
+                <span style="font-size:30px;color:#409eff" v-if="data.annotation">{{ data.annotation }}</span>
                 <span style="font-size:14px;color:#999" v-else>待标注</span>
               </div>
               <img :src="data.url" class="image" @click="classify(data)">
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { getClassifyImagesList } from '@/api/datasets';
+import { getClassifyImagesList, submitClassify } from '@/api/datasets';
 
 export default {
   name: 'ImageTag',
@@ -55,13 +55,13 @@ export default {
       tag: '',
       nowTag: '',
       datasetId: this.$route.params.id,
-      list: [],
       imagesList: [],
       listQuery: {
         batchSize: 8,
         clusterNumber: 0,
         startImageId: 0
-      }
+      },
+      classifyList: []
     };
   },
   mounted () {
@@ -69,21 +69,35 @@ export default {
   },
   methods: {
     getClassifyImages () {
-      this.testClassifyImagesList = this.GLOBAL.testClassifyImagesList;
-      this.testClassifyImagesList.forEach(function (item) {
-        item.tag = '';
-      });
       getClassifyImagesList(this.listQuery, this.datasetId).then(response => {
-        this.list = response.data;
-        this.imagesList = this.list.list;
-        this.list.forEach(function (item) {
-          item.tag = '待标注';
-        });
+        let list = response.data;
+        this.imagesList = list.list;
       });
     },
     classify (data) {
-      data.tag = this.tag;
+      data.annotation = this.tag;
       this.$forceUpdate();
+    },
+    handleSubmit () {
+      for (let i = 0; i < this.imagesList.length; i++) {
+        let item = this.imagesList[i];
+        if (!item.annotation) {
+          this.$notify.warning('还有图片尚未标注！');
+          return;
+        }
+        let img = {
+          className: item.annotation,
+          imageId: item.id
+        };
+        this.classifyList.push(img);
+      };
+      let classifyResult = {
+        'imageIdToClassNameList': this.classifyList
+      };
+      submitClassify(this.datasetId, classifyResult).then(() => {
+        this.$notify.success('提交成功');
+        this.getClassifyImages();
+      });
     }
   }
 };

@@ -48,3 +48,11 @@ export function getClassifyImagesList (query, id) {
     params: query
   });
 }
+
+export function submitClassify (id, data) {
+  return request({
+    url: '/dataset/' + id + '/annotationClassification',
+    method: 'post',
+    data: data
+  });
+}

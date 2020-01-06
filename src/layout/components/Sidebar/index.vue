@@ -35,9 +35,6 @@ export default {
       myroutes: routes.options.routes
     };
   },
-  mounted () {
-    console.log(this.myroutes);
-  },
   computed: {
     ...mapGetters([
       'sidebar'
