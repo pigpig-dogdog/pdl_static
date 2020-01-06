@@ -436,6 +436,39 @@ const AutoAlgoTaskInfo = {
   ]
 };
 
+const Modules = [
+  {
+    id: 'datasets',
+    title: '数据集',
+    content: 'datasets',
+    icon: 'datasets'
+  },
+  {
+    id: 'train',
+    title: '训练',
+    content: '',
+    icon: 'train-logo'
+  },
+  {
+    id: 'algo-service',
+    title: '在线化服务',
+    content: '',
+    icon: 'algo-service'
+  },
+  {
+    id: 'k8s',
+    title: 'K8S',
+    content: '',
+    icon: 'k8s'
+  },
+  {
+    id: 'auto-algo-task',
+    title: '自助式算法任务',
+    content: '',
+    icon: 'auto-algo-task'
+  }
+];
+
 const memory = ['4G', '8G', '16G'];
 const cpuSpeci = ['intel i3', 'intel i5', 'intel i7'];
 const cpuCore = ['1核', '2核', '4核'];
@@ -534,6 +567,7 @@ export default {
   k8sMonitorList,
   trainInfo,
   algoServiceInfo,
+  Modules,
   testClassifyImagesList,
   autoAlgoTaskServiceList,
   autoAlgoTaskTrainList, // TODO:test list ,之后要删掉

@@ -76,7 +76,7 @@ export default new Router({
               path: 'detail/:id/auto-algo-task',
               component: () => import('@/views/auto-algo-task/components/detail'),
               hidden: true,
-              name: 'AutoAlgoTaskDetail',
+              name: 'DatasetAutoAlgoTaskDetail',
               meta: { title: '自助算法任务详情' }
             }
           ]
