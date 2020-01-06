@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'TrainIndex'
+  name: 'K8sIndex'
 };
 </script>

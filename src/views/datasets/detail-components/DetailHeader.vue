@@ -176,10 +176,10 @@ export default {
       return isJPG || isPNG;
     },
     goImageTag () {
-      this.$router.push(this.$route.params.id + this.tagUrl);
+      this.$router.replace(this.$route.params.id + this.tagUrl);
     },
     goAutoAlgoTask () {
-      this.$router.push(this.$route.params.id + '/auto-algo-task');
+      this.$router.replace(this.$route.params.id + '/auto-algo-task');
     }
   }
 };

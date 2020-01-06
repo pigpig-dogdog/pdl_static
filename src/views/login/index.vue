@@ -138,7 +138,7 @@ export default {
       this.loading = true;
       this.$store.dispatch('user/login', this.loginForm)
         .then((res) => {
-          this.$router.push('/datasets/index');
+          this.$router.push('/pdl');
         })
         .catch(() => {
           // todo, 断网提醒

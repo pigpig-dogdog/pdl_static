@@ -55,7 +55,7 @@ export default {
       this.$store.dispatch('datasets/getDatasetsList', this.listQuery);
     },
     goDatasetsDetail (datasetId) {
-      this.$router.push('/datasets/detail/' + datasetId);
+      this.$router.replace('detail/' + datasetId);
     }
   }
 };

@@ -65,7 +65,7 @@ export default {
       this.$store.dispatch('datasets/getDatasetsList', this.listQuery);
     },
     goCreateDataset () {
-      this.$router.push('/datasets/new');
+      this.$router.replace('new');
     }
   }
 };

@@ -1,18 +1,11 @@
 <template>
   <div>
-    <datasets-header></datasets-header>
-    <datasets-main></datasets-main>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import DatasetsHeader from './components/DatasetsHeader.vue';
-import DatasetsMain from './components/DatasetsMain.vue';
 export default {
-  name: 'Datasets',
-  components: {
-    DatasetsHeader,
-    DatasetsMain
-  }
+  name: 'Dataset'
 };
 </script>

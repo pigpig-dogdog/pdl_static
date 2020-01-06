@@ -66,7 +66,7 @@ export default {
       this.$store.dispatch('train/getTrainList', this.listQuery);
     },
     goCreateTrain () {
-      this.$router.push('/train/new');
+      this.$router.replace('new');
     }
   }
 };

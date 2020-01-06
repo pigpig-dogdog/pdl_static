@@ -9,7 +9,7 @@
 import ResourcesHeader from './components/ResourcesHeader';
 import ResourcesMain from './components/ResourcesMain';
 export default {
-  name: 'Resources',
+  name: 'K8s',
   components: {
     ResourcesHeader,
     ResourcesMain

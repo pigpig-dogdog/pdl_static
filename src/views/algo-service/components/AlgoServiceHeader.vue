@@ -66,7 +66,7 @@ export default {
       this.$store.dispatch('algo_service/getAlgoServiceList', this.listQuery);
     },
     goCreateAlgoService () {
-      this.$router.push('/algo-service/new');
+      this.$router.replace('new');
     }
   }
 };

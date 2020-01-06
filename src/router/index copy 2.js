@@ -21,12 +21,12 @@ export default new Router({
       component: () => import('@/views/login/index')
     },
     {
-      path: '/pdl',
-      name: 'PDL',
+      path: '/home',
+      name: 'Home',
       component: Layout,
       children: [
         {
-          path: 'home',
+          path: '',
           component: () => import('@/views/home/index'),
           name: 'HomePage',
           meta: { title: '首页', icon: 'dashboard' }
@@ -34,15 +34,12 @@ export default new Router({
         {
           path: 'datasets',
           name: 'Datasets',
-          component: () => import('@/views/datasets/index'),
-          redirect: 'datasets/index',
-          meta: { title: '数据集', icon: 'datasets' },
           children: [
             {
               path: 'index',
-              component: () => import('@/views/datasets/dataset'),
+              component: () => import('@/views/datasets/index'),
               name: 'DatasetsIndex',
-              meta: { title: '数据集列表' }
+              meta: { title: '数据集', icon: 'datasets' }
             },
             {
               path: 'new',
@@ -83,16 +80,12 @@ export default new Router({
         },
         {
           path: 'train',
-          name: 'Train',
-          component: () => import('@/views/train/index'),
-          redirect: 'train/index',
-          meta: { title: '训练', icon: 'train-logo' },
           children: [
             {
               path: 'index',
-              component: () => import('@/views/train/train'),
-              name: 'TrainIndex',
-              meta: { title: '训练列表' }
+              component: () => import('@/views/train/index'),
+              name: 'Train',
+              meta: { title: '训练', icon: 'train-logo' }
             },
             {
               path: 'new',
@@ -112,15 +105,12 @@ export default new Router({
         },
         {
           path: 'algo-service',
-          meta: { title: '在线化服务', icon: 'algo-service' },
-          component: () => import('@/views/algo-service/index'),
-          redirect: 'algo-service/index',
           children: [
             {
               path: 'index',
-              component: () => import('@/views/algo-service/algoService'),
+              component: () => import('@/views/algo-service/index'),
               name: 'AlgoService',
-              meta: { title: '在线化服务列表' }
+              meta: { title: '在线化服务', icon: 'algo-service' }
             },
             {
               path: 'new',
@@ -132,30 +122,24 @@ export default new Router({
           ]
         },
         {
-          path: 'k8s',
-          meta: { title: 'k8s监控台', icon: 'k8s' },
-          component: () => import('@/views/k8s/index'),
-          redirect: 'k8s/index',
+          path: 'resources',
           children: [
             {
               path: 'index',
-              component: () => import('@/views/k8s/k8s'),
-              name: 'K8sIndex',
-              meta: { title: 'k8s监控台' }
+              component: () => import('@/views/resources/index'),
+              name: 'Resources',
+              meta: { title: 'k8s监控台', icon: 'k8s' }
             }
           ]
         },
         {
           path: 'auto-algo-task',
-          meta: { title: '自助算法任务', icon: 'auto-algo-task' },
-          component: () => import('@/views/auto-algo-task/index'),
-          redirect: 'auto-algo-task/index',
           children: [
             {
               path: 'index',
-              component: () => import('@/views/auto-algo-task/autoAlgoTask'),
+              component: () => import('@/views/auto-algo-task/index'),
               name: 'AutoAlgoTask',
-              meta: { title: '自助算法任务列表', icon: 'auto-algo-task' }
+              meta: { title: '自助算法任务', icon: 'auto-algo-task' }
             },
             {
               path: 'detail/:id',

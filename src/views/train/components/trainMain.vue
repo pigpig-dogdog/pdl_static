@@ -110,7 +110,7 @@ export default {
       this.$store.dispatch('train/getTrainList', this.listQuery);
     },
     goTrainLog (index, row) {
-      this.$router.push('log/' + row.id);
+      this.$router.replace('log/' + row.id);
     },
     getTagColor (status) {
       for (var i = 0; i < this.trainStatusList.length; i++) {
