@@ -98,24 +98,24 @@ export default new Router({
     {
       path: '/algo-service',
       component: Layout,
-      children: [
-        {
-          path: 'index',
-          component: () => import('@/views/algo-service/index'),
-          name: 'AlgoService',
-          meta: { title: '在线化服务', icon: 'algo-service' }
+          children: [
+            {
+              path: 'index',
+              component: () => import('@/views/algo-service/index'),
+              name: 'AlgoService',
+              meta: { title: '在线化服务', icon: 'algo-service' }
+            },
+            {
+              path: 'new',
+              component: () => import('@/views/algo-service/components/NewAlgoService'),
+              name: 'NewAlgoService',
+              hidden: true,
+              meta: { title: '新增在线化服务' }
+            }
+          ]
         },
         {
-          path: 'new',
-          component: () => import('@/views/algo-service/components/NewAlgoService'),
-          name: 'NewAlgoService',
-          hidden: true,
-          meta: { title: '新增在线化服务' }
-        }
-      ]
-    },
-    {
-      path: '/resources',
+          path: '/resources',
       component: Layout,
       children: [
         {
