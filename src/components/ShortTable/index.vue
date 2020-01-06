@@ -85,8 +85,6 @@ export default {
       console.log(this.info.status);
       this.statusInfo = this.info.status ? this.info.status : '';
       this.operations = this.info.operations ? this.info.operations : '';
-      // 本地数据测试
-      // this.list = this.GLOBAL[this.info.data];
       getList(this.info.api).then(response => {
         this.list = response.data;
       });

@@ -52,7 +52,6 @@ export default {
   },
   watch: {
     imagesList: function (val) {
-      // this.total = 20; // for debug
       this.total = val.totalItemsNumber;
       this.list = val.list;
     }

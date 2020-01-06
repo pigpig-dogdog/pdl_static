@@ -403,7 +403,7 @@ const AutoAlgoTaskInfo = {
       label: '名称',
       jumpUrlId: 'id',
       jumpTitle: '点击查看自助式算法任务详情',
-      jump: '/auto-algo-task/detail/'
+      jump: '/pdl/auto-algo-task/detail/'
     },
     {
       name: 'createTime',
@@ -426,7 +426,7 @@ const AutoAlgoTaskInfo = {
       label: '数据集名称',
       jumpUrlId: 'datasetId',
       jumpTitle: '点击查看数据集详情',
-      jump: '/datasets/detail/'
+      jump: '/pdl/datasets/detail/'
     },
     {
       name: 'algoType',

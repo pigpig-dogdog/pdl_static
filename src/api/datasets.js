@@ -25,7 +25,7 @@ export function createDataset (data) {
 
 export function getImagesList (query, id) {
   return request({
-    url: '/dataset/' + id + '/getNextBatchUnannotatedImages',
+    url: '/dataset/' + id + '/listImages',
     method: 'get',
     params: query
   });
