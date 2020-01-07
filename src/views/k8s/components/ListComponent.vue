@@ -49,7 +49,6 @@ export default {
         var item = this.k8sMonitorList[i];
         if (this.title === item.name) {
           this.tableAttributes = item.attributes;
-          console.log(item);
           getContainerList(item.api).then(response => {
             this.list = response.data;
           });

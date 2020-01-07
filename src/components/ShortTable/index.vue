@@ -82,7 +82,6 @@ export default {
   methods: {
     getList () {
       this.tableAttributes = this.info.attributes;
-      console.log(this.info.status);
       this.statusInfo = this.info.status ? this.info.status : '';
       this.operations = this.info.operations ? this.info.operations : '';
       getList(this.info.api).then(response => {

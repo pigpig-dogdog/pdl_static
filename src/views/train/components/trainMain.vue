@@ -128,7 +128,6 @@ export default {
       }
     },
     downloadResult (index, row) {
-      console.log(row.status);
       // TODO:如何做到不使用字符串来判断，以便后端status字段改变时，只需要改变全局定义的常量即可
       if (row.status === 'WAITING' || row.status === 'RUNNING') {
         this.$notify({

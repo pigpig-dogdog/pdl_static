@@ -22,7 +22,6 @@ export default {
       getTrainLog(this.trainId).then(response => {
         var data = response.data;
         this.trainLog = data.split('\n');
-        console.log(this.trainLog);
       });
     }
   }

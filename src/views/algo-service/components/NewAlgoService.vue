@@ -124,7 +124,6 @@ export default {
       if (!files.length) {
         return;
       };
-      console.log(files[0]);
       const formData = new FormData();
       formData.append('codeZipFile', files[0]);
       this.codeZipFile = formData;
