@@ -440,32 +440,32 @@ const Modules = [
   {
     id: 'datasets',
     title: '数据集',
-    content: 'datasets',
+    content: '海量图片存储，图像聚类算法辅助数据标注',
     icon: 'datasets'
   },
   {
     id: 'train',
     title: '训练',
-    content: '',
+    content: '一键提交训练，实时查看日志',
     icon: 'train-logo'
   },
   {
     id: 'algo-service',
     title: '在线化服务',
-    content: '',
+    content: '一键部署算法，无需编写服务化代码，赋予负载均衡、弹性伸缩、滚动更新',
     icon: 'algo-service'
-  },
-  {
-    id: 'k8s',
-    title: 'K8S',
-    content: '',
-    icon: 'k8s'
   },
   {
     id: 'auto-algo-task',
     title: '自助式算法任务',
-    content: '',
+    content: '无需编写一行代码，只需完成数据标注，即可自动完成训练与在线化服务，得到Resultful API',
     icon: 'auto-algo-task'
+  },
+  {
+    id: 'k8s',
+    title: 'Kubernets监控台',
+    content: '实时监控kubernets集群',
+    icon: 'k8s'
   }
 ];
 

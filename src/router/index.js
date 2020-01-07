@@ -132,20 +132,6 @@ export default new Router({
           ]
         },
         {
-          path: 'k8s',
-          meta: { title: 'k8s监控台', icon: 'k8s' },
-          component: () => import('@/views/k8s/index'),
-          redirect: 'k8s/index',
-          children: [
-            {
-              path: 'index',
-              component: () => import('@/views/k8s/k8s'),
-              name: 'K8sIndex',
-              meta: { title: 'k8s监控台' }
-            }
-          ]
-        },
-        {
           path: 'auto-algo-task',
           meta: { title: '自助算法任务', icon: 'auto-algo-task' },
           component: () => import('@/views/auto-algo-task/index'),
@@ -163,6 +149,45 @@ export default new Router({
               name: 'AutoAlgoTaskDetail',
               hidden: true,
               meta: { title: '自助算法任务详情', icon: 'auto-algo-task' }
+            }
+          ]
+        },
+        {
+          path: 'k8s',
+          meta: { title: 'k8s监控台', icon: 'k8s' },
+          hasChildren: true,
+          component: () => import('@/views/k8s/index'),
+          // redirect: 'k8s/index',
+          children: [
+            {
+              path: 'index',
+              component: () => import('@/views/k8s/k8s'),
+              name: 'K8sIndex',
+              meta: { title: 'node', icon: 'k8s' }
+            },
+            {
+              path: 'index',
+              component: () => import('@/views/k8s/k8s'),
+              name: 'K8s-Job',
+              meta: { title: 'job', icon: 'k8s' }
+            },
+            {
+              path: 'index',
+              component: () => import('@/views/k8s/k8s'),
+              name: 'K8s-Job',
+              meta: { title: 'deployment', icon: 'k8s' }
+            },
+            {
+              path: 'index',
+              component: () => import('@/views/k8s/k8s'),
+              name: 'K8s-Job',
+              meta: { title: 'service', icon: 'k8s' }
+            },
+            {
+              path: 'index',
+              component: () => import('@/views/k8s/k8s'),
+              name: 'K8s-Job',
+              meta: { title: 'pod', icon: 'k8s' }
             }
           ]
         }

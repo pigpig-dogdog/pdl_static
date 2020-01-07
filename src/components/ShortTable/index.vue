@@ -8,7 +8,7 @@
     <el-table
       :data="list"
       stripe
-      height=1000px
+      :height=tableHeight
       style="width: 100%">
       <el-table-column
         v-for="item in tableAttributes"

@@ -2,13 +2,25 @@
   <div v-if="!item.hidden" class="menu-wrapper">
 
     <div v-for="data in item.children" :key="data.name">
-      <app-link :to="resolvePath(data.path)">
-        <el-menu-item :index="resolvePath(data.path)" :class="{'submenu-title-noDropdown':!isNest}">
-          <item :icon="data.meta.icon" :title="data.meta.title" />
-        </el-menu-item>
-      </app-link>
+      <div v-if="!data.hasChildren">
+        <app-link :to="resolvePath(data.path)">
+          <el-menu-item :index="resolvePath(data.path)" :class="{'submenu-title-noDropdown':!isNest}">
+            <item :icon="data.meta.icon" :title="data.meta.title" />
+          </el-menu-item>
+        </app-link>
+      </div>
+      <el-submenu v-else ref="subMenu" :index="resolvePath(data.path)" popper-append-to-body>
+        <template slot="title">
+          <item v-if="data.meta" :icon="data.meta && data.meta.icon" :title="data.meta.title"/>
+        </template>
+        <sidebar-item
+          :is-nest="true"
+          :item="data"
+          :base-path="resolvePath(data.path)"
+          class="nest-menu"
+        />
+      </el-submenu>
     </div>
-
   </div>
 </template>
 
@@ -82,6 +94,14 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.menu-wrapper .el-submenu .el-submenu__title{
+    height: 80px;
+    line-height: 80px;
+    font-size: 18px;
+}
+</style>
+
 <style lang="scss" scoped>
 .menu-wrapper {
   .el-menu-item {
@@ -90,4 +110,5 @@ export default {
     font-size: 18px;
   }
 }
+
 </style>

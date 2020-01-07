@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <short-table v-for="data in AutoAlgoTaskDetailTableList" :key="data.id" :infoName="data.info" :tableHeight="300"></short-table>
+      <short-table v-for="data in AutoAlgoTaskDetailTableList" :key="data.id" :infoName="data.info" tableHeight="300px"></short-table>
     </div>
   </div>
 </template>
@@ -26,7 +26,8 @@ export default {
   methods: {
     getAutoAlgoTaskDetail () {
       getAutoAlgoTaskDetail(this.datasetId).then((data) => {
-        // this.AutoAlgoTaskDetailTableList = data.data;
+        this.AutoAlgoTaskDetailTableList = data.data;
+        console.log(data.data.algoTrainIdToAcc[80]);
       });
     }
   }
