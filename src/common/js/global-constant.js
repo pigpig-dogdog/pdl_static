@@ -109,18 +109,20 @@ const algoServiceStatus = [
   }
 ];
 
-// const AlgoService = {
-//   Waiting: {
-//     label: '等待',
-//     value: 'WAITING',
-//     tagType: 'warning'
-//   },
-//   Serving: {
-//     label: 'fusasa',
-//     value: 'sadwq',
-//     tagType: 'dqwdwq'
-//   }
-// };
+const AutoAlgoTaskDetailList = {
+  autoAlgoTask: {
+    info: 'AutoAlgoTaskInfo',
+    list: 'autoAlgoTaskList'
+  },
+  algoService: {
+    info: 'algoServiceInfo',
+    list: 'algoServiceList'
+  },
+  train: {
+    info: 'trainInfo',
+    list: 'trainList'
+  }
+};
 
 // TODO:将数组拆分为单个对象
 const k8sMonitorList = [
@@ -269,12 +271,19 @@ const k8sMonitorList = [
 // AutoAlgoTaskDetail
 const AutoAlgoTaskDetailTableList = [
   {
-    id: 'train',
-    info: 'trainInfo'
+    id: 'autoAlgoTask',
+    info: 'AutoAlgoTaskInfo',
+    list: 'autoAlgoTaskList'
   },
   {
     id: 'algoService',
-    info: 'algoServiceInfo'
+    info: 'algoServiceInfo',
+    list: 'algoServiceList'
+  },
+  {
+    id: 'train',
+    info: 'trainInfo',
+    list: 'trainList'
   }
 ];
 
@@ -308,8 +317,11 @@ const trainInfo = {
   attributes: [
     {
       name: 'name',
-      columnWidth: 300,
-      label: '名称'
+      columnWidth: 200,
+      label: '名称',
+      jumpUrlId: 'id',
+      jumpTitle: '点击查看训练详情',
+      jump: '/pdl/train/detail/'
     },
     {
       name: 'createTime',
@@ -319,11 +331,12 @@ const trainInfo = {
     {
       name: 'updatedTime',
       columnWidth: 200,
-      label: '创建时间'
+      detailHidden: true,
+      label: '更新时间'
     },
     // TODO: 准确率字段名
     {
-      name: 'right',
+      name: 'acc',
       columnWidth: 200,
       label: '准确率'
     }
@@ -343,7 +356,8 @@ const algoServiceInfo = {
   },
   operations: {
     name: 'operations',
-    columnWidth: '',
+    detailHidden: true,
+    columnWidth: 450,
     data: [
       {
         title: '弹性伸缩',
@@ -359,8 +373,11 @@ const algoServiceInfo = {
   attributes: [
     {
       name: 'name',
-      columnWidth: 300,
-      label: '名称'
+      columnWidth: 200,
+      label: '名称',
+      jumpUrlId: 'id',
+      jumpTitle: '点击查看在线化服务详情',
+      jump: '/pdl/algo-service/detail/'
     },
     {
       name: 'createTime',
@@ -370,6 +387,7 @@ const algoServiceInfo = {
     {
       name: 'updatedTime',
       columnWidth: 200,
+      detailHidden: true,
       label: '修改时间'
     },
     {
@@ -379,7 +397,7 @@ const algoServiceInfo = {
     },
     {
       name: 'serviceUrl',
-      columnWidth: 300,
+      columnWidth: 200,
       label: '服务地址'
     }
   ]
@@ -399,7 +417,7 @@ const AutoAlgoTaskInfo = {
   attributes: [
     {
       name: 'name',
-      columnWidth: 350,
+      columnWidth: 200,
       label: '名称',
       jumpUrlId: 'id',
       jumpTitle: '点击查看自助式算法任务详情',
@@ -412,6 +430,7 @@ const AutoAlgoTaskInfo = {
     },
     {
       name: 'modifyTime',
+      detailHidden: true,
       columnWidth: 200,
       label: '更新时间'
     },
@@ -422,7 +441,7 @@ const AutoAlgoTaskInfo = {
     },
     {
       name: 'datasetName',
-      columnWidth: 250,
+      columnWidth: 200,
       label: '数据集名称',
       jumpUrlId: 'datasetId',
       jumpTitle: '点击查看数据集详情',
@@ -573,5 +592,6 @@ export default {
   autoAlgoTaskTrainList, // TODO:test list ,之后要删掉
   AutoAlgoTaskDetailTableList,
   AutoAlgoTaskStatus,
-  AutoAlgoTaskInfo
+  AutoAlgoTaskInfo,
+  AutoAlgoTaskDetailList
 };

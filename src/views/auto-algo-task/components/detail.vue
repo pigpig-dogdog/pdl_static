@@ -26,8 +26,8 @@ export default {
   methods: {
     getAutoAlgoTaskDetail () {
       getAutoAlgoTaskDetail(this.datasetId).then((data) => {
-        this.AutoAlgoTaskDetailTableList = data.data;
-        console.log(data.data.algoTrainIdToAcc[80]);
+        // this.AutoAlgoTaskDetailTableList = data.data;
+        // console.log(data.data.algoTrainIdToAcc[80]);
       });
     }
   }

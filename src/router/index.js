@@ -145,7 +145,7 @@ export default new Router({
             },
             {
               path: 'detail/:id',
-              component: () => import('@/views/auto-algo-task/components/detail'),
+              component: () => import('@/views/auto-algo-task/components/taskDetail'),
               name: 'AutoAlgoTaskDetail',
               hidden: true,
               meta: { title: '自助算法任务详情', icon: 'auto-algo-task' }
@@ -155,7 +155,7 @@ export default new Router({
         {
           path: 'k8s',
           meta: { title: 'k8s监控台', icon: 'k8s' },
-          hasChildren: true,
+          // hasChildren: true,
           component: () => import('@/views/k8s/index'),
           // redirect: 'k8s/index',
           children: [
