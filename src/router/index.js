@@ -155,9 +155,9 @@ export default new Router({
         {
           path: 'k8s',
           meta: { title: 'k8s监控台', icon: 'k8s' },
-          hasChildren: true,
+          // hasChildren: true,
           component: () => import('@/views/k8s/index'),
-          // redirect: 'k8s/index',
+          redirect: 'k8s/node',
           children: [
             {
               path: 'node',
@@ -178,31 +178,31 @@ export default new Router({
                   meta: { title: 'NODE-DETAIL' }
                 }
               ]
-            },
-            {
-              path: 'job',
-              component: () => import('@/views/k8s/components/job'),
-              name: 'K8s-Job',
-              meta: { title: 'job', icon: 'k8s' }
-            },
-            {
-              path: 'deployment',
-              component: () => import('@/views/k8s/components/deployment'),
-              name: 'K8s-deployment',
-              meta: { title: 'deployment', icon: 'k8s' }
-            },
-            {
-              path: 'service',
-              component: () => import('@/views/k8s/components/service'),
-              name: 'K8s-service',
-              meta: { title: 'service', icon: 'k8s' }
-            },
-            {
-              path: 'pod',
-              component: () => import('@/views/k8s/components/pod'),
-              name: 'K8s-pod',
-              meta: { title: 'pod', icon: 'k8s' }
             }
+            // {
+            //   path: 'job',
+            //   component: () => import('@/views/k8s/components/job'),
+            //   name: 'K8s-Job',
+            //   meta: { title: 'job', icon: 'k8s' }
+            // },
+            // {
+            //   path: 'deployment',
+            //   component: () => import('@/views/k8s/components/deployment'),
+            //   name: 'K8s-deployment',
+            //   meta: { title: 'deployment', icon: 'k8s' }
+            // },
+            // {
+            //   path: 'service',
+            //   component: () => import('@/views/k8s/components/service'),
+            //   name: 'K8s-service',
+            //   meta: { title: 'service', icon: 'k8s' }
+            // },
+            // {
+            //   path: 'pod',
+            //   component: () => import('@/views/k8s/components/pod'),
+            //   name: 'K8s-pod',
+            //   meta: { title: 'pod', icon: 'k8s' }
+            // }
           ]
         }
       ]
