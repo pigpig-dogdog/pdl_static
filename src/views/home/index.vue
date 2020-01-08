@@ -1,16 +1,10 @@
 <template>
   <div>
-    <div class="header">
-      <el-row type="flex" align="middle" justify="center">
-        <el-col :span="7">
-        </el-col>
-        <el-col :span="4" type="flex" justify="center">
-          <img src="@/assets/logo.png" class="pdlLogo"/>
-        </el-col>
-        <el-col :span="13" type="flex" justify="start">
-          <h1>深度学习平台</h1>
-        </el-col>
-      </el-row>
+    <div style="width:100%;" align=center>
+      <img src="@/assets/logo.png" class="pdlLogo"/>
+    </div>
+    <div class="titleStyle">
+      <h1>深度学习平台</h1>
     </div>
     <module-rect v-for="item in modules" :key="item.name" :module="item"></module-rect>
 
@@ -36,21 +30,28 @@
         <h1>支持的深度学习框架</h1>
       </div>
       <div class="title">
-        <el-row :gutter="20">
-          <el-col :span="8">
+        <el-row>
+          <el-col :span="3">
+             <div class="grid-content bg-purple">
+               <img src="@/assets/blank.png" class="imgStyle"/>
+            </div>
+          </el-col>
+          <el-col :span="6">
             <div class="grid-content bg-purple">
               <img src="@/assets/HomeLogo/tensorflow.png" class="imgStyle"/>
             </div>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="6">
             <div class="grid-content bg-purple">
               <img src="@/assets/HomeLogo/pytorch.png" class="imgStyle"/>
             </div>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="6">
             <div class="grid-content bg-purple">
               <img src="@/assets/HomeLogo/keras.png" class="imgStyle"/>
             </div>
+          </el-col>
+          <el-col :span="3">
           </el-col>
         </el-row>
       </div>
@@ -74,9 +75,15 @@ export default {
 </script>
 
 <style scoped>
+  .titleStyle {
+    width: 100%;
+    text-align: center;
+    font-size: 23px;
+    margin-bottom: 20px;
+  }
   .imgStyle {
     height: 70px;
-    width:280px;
+    width:100%;
   }
   .title {
     text-align: center;
@@ -92,7 +99,7 @@ export default {
   .pdlLogo {
     display: flex;
     padding:20px;
-    width: 200px;
-    height: 100px;
+    width: 220px;
+    height: 110px;
   }
 </style>
