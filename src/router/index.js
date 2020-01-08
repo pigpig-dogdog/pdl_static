@@ -155,38 +155,52 @@ export default new Router({
         {
           path: 'k8s',
           meta: { title: 'k8s监控台', icon: 'k8s' },
-          // hasChildren: true,
+          hasChildren: true,
           component: () => import('@/views/k8s/index'),
           // redirect: 'k8s/index',
           children: [
             {
-              path: 'index',
-              component: () => import('@/views/k8s/k8s'),
-              name: 'K8sIndex',
-              meta: { title: 'node', icon: 'k8s' }
+              path: 'node',
+              component: () => import('@/views/k8s/components/node/index.vue'),
+              name: 'K8s-node',
+              meta: { title: 'NODE', icon: 'k8s' },
+              children: [
+                {
+                  path: '',
+                  component: () => import('@/views/k8s/components/node/node.vue'),
+                  name: 'K8s-node-index',
+                  meta: { title: '' }
+                },
+                {
+                  path: ':name',
+                  component: () => import('@/views/k8s/components/node/detail.vue'),
+                  name: 'K8s-node-detail',
+                  meta: { title: 'NODE-DETAIL' }
+                }
+              ]
             },
             {
-              path: 'index',
-              component: () => import('@/views/k8s/k8s'),
+              path: 'job',
+              component: () => import('@/views/k8s/components/job'),
               name: 'K8s-Job',
               meta: { title: 'job', icon: 'k8s' }
             },
             {
-              path: 'index',
-              component: () => import('@/views/k8s/k8s'),
-              name: 'K8s-Job',
+              path: 'deployment',
+              component: () => import('@/views/k8s/components/deployment'),
+              name: 'K8s-deployment',
               meta: { title: 'deployment', icon: 'k8s' }
             },
             {
-              path: 'index',
-              component: () => import('@/views/k8s/k8s'),
-              name: 'K8s-Job',
+              path: 'service',
+              component: () => import('@/views/k8s/components/service'),
+              name: 'K8s-service',
               meta: { title: 'service', icon: 'k8s' }
             },
             {
-              path: 'index',
-              component: () => import('@/views/k8s/k8s'),
-              name: 'K8s-Job',
+              path: 'pod',
+              component: () => import('@/views/k8s/components/pod'),
+              name: 'K8s-pod',
               meta: { title: 'pod', icon: 'k8s' }
             }
           ]

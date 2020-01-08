@@ -403,6 +403,98 @@ const algoServiceInfo = {
   ]
 };
 
+const systemInfo = {
+  id: 'k8s-node-systemInfo',
+  name: 'System Information',
+  attributes: [
+    {
+      name: 'machineID',
+      columnWidth: 200,
+      label: 'Machine ID'
+    },
+    {
+      name: 'systemUUID',
+      columnWidth: 200,
+      label: 'System UUID'
+    },
+    {
+      name: 'bootID',
+      columnWidth: 200,
+      label: 'Boot ID'
+    },
+    {
+      name: 'containerRuntimeVersion',
+      columnWidth: 200,
+      label: 'Container Runtime Version'
+    },
+    {
+      name: 'kernelVersion',
+      columnWidth: 200,
+      label: 'kernel Version'
+    },
+    {
+      name: 'osImage',
+      columnWidth: 200,
+      label: 'OS Image'
+    },
+    {
+      name: 'kubeletVersion',
+      columnWidth: 200,
+      label: 'Kubelet Version'
+    },
+    {
+      name: 'architecture',
+      columnWidth: 200,
+      label: 'Architecture'
+    },
+    {
+      name: 'operatingSystem',
+      columnWidth: '',
+      label: 'Operating System'
+    }
+  ]
+};
+
+const nodeTable = {
+  id: 'k8s-node',
+  name: 'k8s-node',
+  api: '/node/list',
+  attributes: [
+    {
+      name: 'name',
+      columnWidth: 200,
+      label: 'Name',
+      jumpUrlId: 'name',
+      jumpTitle: '点击查看k8s-node详情',
+      jump: '/pdl/k8s/node/'
+    },
+    {
+      name: 'Ready',
+      columnWidth: 200,
+      label: 'Ready'
+    },
+    {
+      name: 'OS',
+      columnWidth: 200,
+      label: 'OS'
+    },
+    {
+      name: 'CpuCores',
+      columnWidth: 200,
+      label: 'Cpu cores'
+    },
+    {
+      name: 'Memory',
+      columnWidth: 200,
+      label: 'Memory'
+    },
+    {
+      name: 'CreationTime',
+      columnWidth: '',
+      label: 'CreationTime'
+    }
+  ]
+};
 const AutoAlgoTaskInfo = {
   id: 'autoAlgoTask',
   name: '自助式算法任务',
@@ -584,6 +676,7 @@ export default {
   gpuNum,
   algoServiceStatus,
   k8sMonitorList,
+  nodeTable,
   trainInfo,
   algoServiceInfo,
   Modules,
@@ -593,5 +686,6 @@ export default {
   AutoAlgoTaskDetailTableList,
   AutoAlgoTaskStatus,
   AutoAlgoTaskInfo,
-  AutoAlgoTaskDetailList
+  AutoAlgoTaskDetailList,
+  systemInfo
 };

@@ -104,7 +104,7 @@ export default {
     },
     judgeJump (columnInfo, data) {
       if (columnInfo.jump) {
-        this.$router.push(columnInfo.jump + data[columnInfo.jumpUrlId]);
+        this.$router.replace(columnInfo.jump + data[columnInfo.jumpUrlId]);
       }
     }
   }
@@ -113,19 +113,17 @@ export default {
 
 <style scoped>
 .rect {
-  margin: 20px;
-  width: 95%;
-  max-height:320px;
+  /* margin: 20px;
+  margin-right: 20px; */
+  width: 100%;
   background: #ffffff;
   box-shadow: 5px 5px 3px rgba(0,21,41,.08),0 -3px 1px rgba(0,21,41,.08);
   overflow: auto;
 }
 .listTitle {
-  /* background: rgb(151, 192, 229); */
   height: 35px;
   width: 100%;
   border: 1px solid #e9e5e5;
-  /* color: rgb(245, 243, 243); */
   line-height: 35px;
 }
 .titleText {
