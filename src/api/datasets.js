@@ -31,6 +31,14 @@ export function getImagesList (query, id) {
   });
 }
 
+export function getTagImagesList (query, id) {
+  return request({
+    url: '/dataset/' + id + '/listImages',
+    method: 'get',
+    params: query
+  });
+}
+
 export function uploadImage (query, id, data) {
   return request({
     url: '/dataset/' + id + '/uploadImage',

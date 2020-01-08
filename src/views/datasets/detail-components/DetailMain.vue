@@ -11,7 +11,7 @@
         </el-row>
         <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
       </el-tab-pane>
-      <el-tab-pane label="已标注" name="annotated">
+      <el-tab-pane v-for="data in datasetTags" :key="data" :label="data" :name="data">
         <el-row :gutter="20">
           <el-col :span="4" v-for="data in list" :key="data.id">
             <el-card :body-style="{ padding: '30px' }">
@@ -39,9 +39,11 @@ export default {
       listQuery: {
         annotated: false,
         pageNumber: 1,
-        pageSize: 12
+        pageSize: 12,
+        className: null
       },
       list: [],
+      datasetTags: this.$store.state.datasets.tagsList,
       activeName: 'noAnnotated'
     };
   },
@@ -68,6 +70,7 @@ export default {
         this.listQuery.annotated = false;
       } else {
         this.listQuery.annotated = true;
+        this.listQuery.className = tab.name;
       }
       this.getList();
     }
