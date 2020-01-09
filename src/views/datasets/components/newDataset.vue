@@ -79,7 +79,7 @@ export default {
               message: '创建数据集成功！',
               type: 'success'
             });
-            this.$router.push('/datasets/index');
+            this.$router.replace('index');
           });
         } else {
           return false;
