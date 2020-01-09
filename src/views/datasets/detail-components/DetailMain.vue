@@ -1,7 +1,7 @@
 <template>
   <div style="margin: 0 0 0 20px">
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="未标注" name="noAnnotated">
+      <el-tab-pane :label="'未标注' + '(共' + noAnnotatedNum + '张图片)'" name="noAnnotated">
         <el-row :gutter="20">
           <el-col :span="4" v-for="data in list" :key="data.id">
             <el-card :body-style="{ padding: '30px' }">
@@ -11,7 +11,7 @@
         </el-row>
         <pagination v-show="total > 0" :total="total" :page.sync="listQuery.pageNumber" :limit.sync="listQuery.pageSize" @pagination="getList" />
       </el-tab-pane>
-      <el-tab-pane label="已标注" name="annotated" v-if="datasetAlgoType == 'DETECTION'">
+      <el-tab-pane :label="'已标注' + '(共' + annotatedNum + '张图片)'" name="annotated" v-if="datasetAlgoType == 'DETECTION'">
         <el-row :gutter="20">
           <el-col :span="4" v-for="data in list" :key="data.id">
             <el-card :body-style="{ padding: '30px' }">
@@ -57,7 +57,9 @@ export default {
       datasetAlgoType: '',
       datasetTags: [],
       activeName: 'noAnnotated',
-      imagesNumArray: ''
+      imagesNumArray: '',
+      noAnnotatedNum: '',
+      annotatedNum: ''
     };
   },
   computed: {
@@ -92,6 +94,8 @@ export default {
     getImagesNum () {
       getImagesNumber(this.$route.params.id).then((response) => {
         this.imagesNumArray = response.data.classNameToAnnotatedNumber;
+        this.annotatedNum = response.data.annotatedNumber;
+        this.noAnnotatedNum = response.data.unAnnotatedNumber;
       });
     },
     handleClick (tab) {
