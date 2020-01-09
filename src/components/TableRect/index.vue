@@ -9,7 +9,7 @@
       :data="list"
       stripe
       style="width: 100%;">
-      <el-table-column
+      <!-- <el-table-column
         v-if="statusInfo"
         :prop="statusInfo.name"
         label=""
@@ -18,7 +18,7 @@
         <template slot-scope="scope">
           <svg-icon :icon-class="listStatus[scope.status].iconClass"/>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         v-for="item in tableAttributes"
         :key="item.name"

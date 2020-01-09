@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="main">
-      <table-rect :items="autoAlgoTaskList" infoName="AutoAlgoTaskInfo" :isDetail="true"></table-rect>
-      <table-rect :items="trainList" infoName="trainInfo" :isDetail="true"></table-rect>
+      <table-rect :items="autoAlgoTaskList" infoName="AutoAlgoTaskInfo" :isDetail="true" class="rectBottomMargin"></table-rect>
+      <table-rect :items="trainList" infoName="trainInfo" :isDetail="true" class="rectBottomMargin"></table-rect>
       <table-rect :items="algoServiceList" infoName="algoServiceInfo" :isDetail="true"></table-rect>
     </div>
   </div>
@@ -48,5 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .rectBottomMargin {
+    margin-bottom: 40px;
+  }
 </style>
