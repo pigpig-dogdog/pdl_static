@@ -40,6 +40,7 @@ export default {
     height:130px;
     background: #ffffff;
     box-shadow: 5px 5px 3px rgba(0,21,41,.08),0 -3px 1px rgba(0,21,41,.08);
+    cursor: pointer;
   }
   .left {
     overflow: hidden;

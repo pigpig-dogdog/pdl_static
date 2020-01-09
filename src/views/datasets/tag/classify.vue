@@ -86,18 +86,21 @@ export default {
   },
   methods: {
     getClassifyImages () {
-      if (localStorage.getItem('clusterNumber') !== null || !localStorage.getItem('clusterFinished')) {
-        this.listQuery.clusterNumber = parseInt(localStorage.getItem('clusterNumber'));
-      } else if (parseInt(localStorage.getItem('clusterFinished')) === 1) {
-        this.listQuery.clusterNumber = null;
-      }
+      if (localStorage.getItem('clusterNumber') !== null) {
+        if (localStorage.getItem('clusterNumber') === 'null') {
+          this.listQuery.clusterNumber = null;
+        } else {
+          this.listQuery.clusterNumber = parseInt(localStorage.getItem('clusterNumber'));
+        }
+      } else {
+        this.listQuery.clusterNumber = 0;
+      };
       getClassifyImagesList(this.listQuery, this.datasetId).then(response => {
         let data = response.data;
         this.imagesList = data.list;
         let clusterNumber = data.clusterNumber;
         if (clusterNumber === null) {
           this.listQuery.clusterNumber = null;
-          localStorage.setItem('clusterFinished', 1);
           localStorage.setItem('clusterNumber', null);
         } else if (data.clusterNumber === parseInt(localStorage.getItem('clusterNumber'))) {
           this.listQuery.clusterNumber = (this.listQuery.clusterNumber + 1) % this.tagsList.length;
