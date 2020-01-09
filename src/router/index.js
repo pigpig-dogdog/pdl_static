@@ -29,7 +29,7 @@ export default new Router({
           path: 'home',
           component: () => import('@/views/home/index'),
           name: 'HomePage',
-          meta: { title: '首页', icon: 'dashboard' }
+          meta: { title: '首页', icon: 'home-logo' }
         },
         {
           path: 'datasets',

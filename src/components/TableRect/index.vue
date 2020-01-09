@@ -135,6 +135,8 @@ export default {
   width: 100%;
   border: 1px solid #e9e5e5;
   line-height: 35px;
+  background: rgb(151, 192, 229);
+  color: #ffffff;
 }
 .titleText {
   font-size: 14px;

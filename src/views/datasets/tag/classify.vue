@@ -96,11 +96,15 @@ export default {
         this.listQuery.clusterNumber = 0;
       };
       getClassifyImagesList(this.listQuery, this.datasetId).then(response => {
+        let predict = false;
+        if (localStorage.getItem('predictOn') === 'true') {
+          predict = true;
+        }
         let data = response.data;
         this.imagesList = data.list;
         for (let i = 0; i < this.imagesList.length; i++) {
           let item = this.imagesList[i];
-          item.annotation = (item.annotation == null && localStorage.getItem('predictOn')) ? item.predictClassName : item.annotation;
+          item.annotation = (item.annotation == null && predict) ? item.predictClassName : item.annotation;
         }
         let clusterNumber = data.clusterNumber;
         if (clusterNumber === null) {
@@ -119,7 +123,7 @@ export default {
       localStorage.setItem('predictOn', this.predictOn);
       for (let i = 0; i < this.imagesList.length; i++) {
         let item = this.imagesList[i];
-        item.annotation = (item.annotation == null && localStorage.getItem('predictOn')) ? item.predictClassName : item.annotation;
+        item.annotation = (item.annotation == null && this.predictOn) ? item.predictClassName : item.annotation;
       }
     },
     classify (data) {
