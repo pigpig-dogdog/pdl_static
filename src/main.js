@@ -36,6 +36,7 @@ new Vue({
 router.beforeEach(async (to, from, next) => {
   if (getToken()) {
     // if is logged in, redirect to the home page
+    localStorage.setItem('clusterNumber', 0);
     next();
   } else {
     /*  has no token */
