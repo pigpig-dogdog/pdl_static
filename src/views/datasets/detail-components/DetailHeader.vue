@@ -15,6 +15,7 @@
         </el-upload>
       </el-col>
 
+      <!-- TODO:封面上传样式修改 -->
       <!-- 数据集详细信息展示   数据集上传图片-->
       <el-col :span="9">
         <el-card class="box-card" style="width:100%">
