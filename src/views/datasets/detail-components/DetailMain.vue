@@ -3,7 +3,7 @@
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane :label="'未标注' + '(共' + noAnnotatedNum + '张图片)'" name="noAnnotated">
         <el-row :gutter="20">
-          <el-col :span="4" v-for="data in list" :key="data.id">
+          <el-col :span="4" v-for="data in list" :key="data.id" class="cardBottomMargin">
             <el-card :body-style="{ padding: '30px' }">
               <img :src="data.url" class="image">
             </el-card>
@@ -13,7 +13,7 @@
       </el-tab-pane>
       <el-tab-pane :label="'已标注' + '(共' + annotatedNum + '张图片)'" name="annotated" v-if="datasetAlgoType == 'DETECTION'">
         <el-row :gutter="20">
-          <el-col :span="4" v-for="data in list" :key="data.id">
+          <el-col :span="4" v-for="data in list" :key="data.id" class="cardBottomMargin">
             <el-card :body-style="{ padding: '30px' }">
               <img :src="data.url" class="image">
             </el-card>
@@ -23,7 +23,7 @@
       </el-tab-pane>
       <el-tab-pane v-else v-for="data in datasetTags" :key="data" :label="data + '(共' + imagesNumArray[data] + '张图片)'" :name="data">
         <el-row :gutter="20">
-          <el-col :span="4" v-for="data in list" :key="data.id">
+          <el-col :span="4" v-for="data in list" :key="data.id" class="cardBottomMargin">
             <el-card :body-style="{ padding: '30px' }">
               <img :src="data.url" class="image">
             </el-card>
@@ -135,6 +135,10 @@ export default {
     width: 100%;
     height:210px;
     display: block;
+  }
+
+  .cardBottomMargin {
+    margin-bottom: 5px;
   }
 
   .clearfix:before,

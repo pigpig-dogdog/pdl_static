@@ -2,7 +2,7 @@
   <div>
     <el-row>
       <el-col :span="5" v-for="data in list" :key="data.id" :offset="1">
-        <el-card :body-style="{ padding: '30px' }">
+        <el-card :body-style="{ padding: '30px' }" style="margin-bottom:40px">
           <img v-if="data.coverImageUrl" :src="data.coverImageUrl" class="image">
           <img v-else src="@/assets/default1.jpg" class="image">
           <div style="padding: 14px;">
