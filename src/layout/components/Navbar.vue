@@ -55,6 +55,7 @@ export default {
     },
     async logout () {
       await this.$store.dispatch('user/logout');
+      localStorage.clear();
       this.$router.push(`/login`);
     }
   }

@@ -49,6 +49,12 @@ export default {
     background: #ffffff;
     text-align: center;
   }
+  .right {
+    overflow: hidden;
+    height: 130px;
+    width: 100%;
+    padding: 10px;
+  }
   .title {
     font-family: "Roboto",sans-serif;
     font-size: 18px;
@@ -57,5 +63,8 @@ export default {
     width: 70%;
     height: 70px;
     margin-top: 20px;
+  }
+  .content {
+    white-space: pre-line;
   }
 </style>

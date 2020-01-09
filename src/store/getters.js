@@ -7,6 +7,7 @@ const getters = {
   datasetsList: state => state.datasets.datasetsList,
   imagesList: state => state.datasets.imagesList,
   tagsList: state => state.datasets.tagsList,
+  algoType: state => state.datasets.algoType,
   trainList: state => state.train.trainList,
   algoServiceList: state => state.algo_service.algoServiceList
 };

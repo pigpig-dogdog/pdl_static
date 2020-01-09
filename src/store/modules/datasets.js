@@ -3,7 +3,8 @@ import { getDatasetsList, getImagesList } from '@/api/datasets';
 const state = {
   datasetsList: [],
   imagesList: [],
-  tagsList: []
+  tagsList: [],
+  algoType: ''
 };
 
 const mutations = {
@@ -15,6 +16,9 @@ const mutations = {
   },
   SET_TAGS_LIST: (state, list) => {
     state.tagsList = list;
+  },
+  SET_ALGOTYPE: (state, data) => {
+    state.algoType = data;
   }
 };
 
@@ -41,6 +45,10 @@ const actions = {
   },
   getTagsList ({ commit }, data) {
     commit('SET_TAGS_LIST', data);
+  },
+  getAlgoType ({ commit }, data) {
+    console.log(data);
+    commit('SET_ALGOTYPE', data);
   }
 };
 

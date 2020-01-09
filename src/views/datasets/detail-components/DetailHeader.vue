@@ -129,6 +129,7 @@ export default {
     getDetail () {
       getDatasetDetail(this.$route.params.id).then(response => {
         this.detail = response.data;
+        let algoType = response.data.algoType;
         this.coverImageUrl = response.data.coverImageUrl;
         for (var i = 0; i < this.algoTypes.length; i++) {
           if (response.data.algoType === this.algoTypes[i].value) {
@@ -138,6 +139,7 @@ export default {
         }
         this.classesNameList = response.data.classesNames.split(' ');
         this.$store.dispatch('datasets/getTagsList', this.classesNameList);
+        this.$store.dispatch('datasets/getAlgoType', algoType);
       });
     },
     uploadCover (param) {

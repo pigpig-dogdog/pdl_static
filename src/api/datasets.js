@@ -15,6 +15,13 @@ export function getDatasetDetail (datasetId) {
   });
 }
 
+export function getImagesNumber (datasetId) {
+  return request({
+    url: '/dataset/' + datasetId + '/imagesNumberDetail',
+    method: 'get'
+  });
+}
+
 export function createDataset (data) {
   return request({
     url: '/dataset/create',

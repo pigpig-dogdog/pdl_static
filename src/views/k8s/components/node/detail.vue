@@ -3,8 +3,8 @@
 
     <!-- Metadata -->
     <div class="rect">
-      <el-collapse accordion>
-        <el-collapse-item>
+      <el-collapse accordion v-model="collapseMetadata">
+        <el-collapse-item name="Metadata">
           <template slot="title">
             Metadata
           </template>
@@ -67,8 +67,8 @@
 
     <!-- Resource Information -->
     <div class="rect">
-      <el-collapse accordion>
-        <el-collapse-item>
+      <el-collapse accordion v-model="collapseResourceInfo">
+        <el-collapse-item name="resourceInfo">
           <template slot="title">
             Resource Information
           </template>
@@ -101,8 +101,8 @@
 
     <!-- System Information -->
     <div class="rect">
-      <el-collapse accordion>
-        <el-collapse-item>
+      <el-collapse accordion v-model="collapseSystemInfo">
+        <el-collapse-item name="systemInfo">
           <template slot="title">
             System Information
           </template>
@@ -113,8 +113,8 @@
 
     <!-- Conditions -->
     <div class="rect">
-      <el-collapse accordion>
-        <el-collapse-item>
+      <el-collapse accordion v-model="collapseConditions">
+        <el-collapse-item name="conditions">
           <template slot="title">
             Conditions
           </template>
@@ -125,8 +125,8 @@
 
     <!-- Images -->
     <div class="rect">
-      <el-collapse accordion>
-        <el-collapse-item>
+      <el-collapse accordion v-model="collapseImages">
+        <el-collapse-item name="images">
           <template slot="title">
             Images
           </template>
@@ -153,10 +153,12 @@ export default {
       labelsKeys: [],
       annotations: [],
       annotationsKeys: [],
+      collapseMetadata: 'Metadata',
 
       // resource Information
       resourceInfo: [],
       addresses: [],
+      collapseResourceInfo: 'resourceInfo',
 
       // System information
       systemInfo: [],
@@ -207,9 +209,11 @@ export default {
           label: 'Operating System'
         }
       ],
+      collapseSystemInfo: 'systemInfo',
 
       // Conditions
       conditions: [],
+      collapseConditions: 'conditions',
       conditionsAttributes: [
         {
           name: 'type',
@@ -245,6 +249,7 @@ export default {
 
       // images
       images: [],
+      collapseImages: 'images',
       sizeCount: 0,
       imagesAttributes: [
         {

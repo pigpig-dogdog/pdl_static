@@ -551,31 +551,31 @@ const Modules = [
   {
     id: 'datasets',
     title: '数据集',
-    content: '海量图片存储，图像聚类算法辅助数据标注',
+    content: '● 海量图片存储，算法赋能，提升标注效率',
     icon: 'datasets'
   },
   {
     id: 'train',
     title: '训练',
-    content: '一键提交训练，实时查看日志',
+    content: '● 一键提交训练，实时查看日志\n● 无需搭建环境，云端容器运行代码，支持主流深度学习框架',
     icon: 'train-logo'
   },
   {
     id: 'algo-service',
     title: '在线化服务',
-    content: '一键部署算法，无需编写服务化代码，赋予负载均衡、弹性伸缩、滚动更新',
+    content: '● 一键部署算法，无需编写服务化代码，即可得到算法服务RESTful API\n● 平台赋能算法服务：多节点部署，负载均衡、弹性伸缩、滚动更新\n● 无需搭建环境，云端容器运行代码，支持主流深度学习框架',
     icon: 'algo-service'
   },
   {
     id: 'auto-algo-task',
     title: '自助式算法任务',
-    content: '无需编写一行代码，只需完成数据标注，即可自动完成训练与在线化服务，得到Resultful API',
+    content: '● 无需编写一行代码，只需完成数据标注，平台自动完成算法训练与部署上线',
     icon: 'auto-algo-task'
   },
   {
     id: 'k8s',
     title: 'Kubernets监控台',
-    content: '实时监控kubernets集群',
+    content: '● 实时监控k8s集群',
     icon: 'k8s'
   }
 ];

@@ -21,6 +21,14 @@
           <div slot="header" class="clearfix">
             <span>操作</span>
           </div>
+          <div class="predictBox">
+            <el-switch
+              v-model="predictOn"
+              active-text="预测标注"
+              inactive-text="自行标注"
+              @change="handlePredict()">
+            </el-switch>
+          </div>
           <div class="text item">
             <el-button type="success" style="width:100%" @click="handleSubmit()">提交标注</el-button>
           </div>
@@ -54,6 +62,7 @@ export default {
       tagsList: this.$store.state.datasets.tagsList,
       tag: '',
       nowTag: '',
+      predictOn: false,
       datasetId: this.$route.params.id,
       imagesList: [],
       listQuery: {
@@ -65,14 +74,46 @@ export default {
     };
   },
   mounted () {
+    let predict = localStorage.getItem('predictOn');
+    if (predict !== null) {
+      if (predict === 'true') {
+        this.predictOn = true;
+      } else {
+        this.predictOn = false;
+      }
+    }
     this.getClassifyImages();
   },
   methods: {
     getClassifyImages () {
+      if (localStorage.getItem('clusterNumber') !== null || !localStorage.getItem('clusterFinished')) {
+        this.listQuery.clusterNumber = parseInt(localStorage.getItem('clusterNumber'));
+      } else if (parseInt(localStorage.getItem('clusterFinished')) === 1) {
+        this.listQuery.clusterNumber = null;
+      }
       getClassifyImagesList(this.listQuery, this.datasetId).then(response => {
-        let list = response.data;
-        this.imagesList = list.list;
+        let data = response.data;
+        this.imagesList = data.list;
+        let clusterNumber = data.clusterNumber;
+        if (clusterNumber === null) {
+          this.listQuery.clusterNumber = null;
+          localStorage.setItem('clusterFinished', 1);
+          localStorage.setItem('clusterNumber', null);
+        } else if (data.clusterNumber === parseInt(localStorage.getItem('clusterNumber'))) {
+          this.listQuery.clusterNumber = (this.listQuery.clusterNumber + 1) % this.tagsList.length;
+          localStorage.setItem('clusterNumber', this.listQuery.clusterNumber);
+        } else {
+          this.listQuery.clusterNumber = data.clusterNumber;
+          localStorage.setItem('clusterNumber', data.clusterNumber);
+        }
       });
+    },
+    handlePredict () {
+      localStorage.setItem('predictOn', this.predictOn);
+      for (let i = 0; i < this.imagesList.length; i++) {
+        let item = this.imagesList[i];
+        item.annotation = (item.annotation == null && localStorage.getItem('predictOn')) ? item.predictClassName : item.annotation;
+      }
     },
     classify (data) {
       data.annotation = this.tag;
@@ -128,6 +169,15 @@ export default {
   .text {
     font-size: 14px;
     color: #999
+  }
+
+  .predictBox {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 14px;
+    margin-bottom:15px;
+    border: 1px solid #d7d7d7;
   }
 
   .item {
