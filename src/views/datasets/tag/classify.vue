@@ -37,7 +37,7 @@
       <!-- 图片部分 -->
       <el-main align="middle" justify="center">
         <el-row>
-          <el-col :span="5" v-for="data in imagesList" :key="data.id" :offset="1">
+          <el-col :span="5" v-for="data in imagesList" :key="data.id" :offset="1" style="margin-bottom:40px">
             <el-card :body-style="{ padding: '0px' }">
               <div class="clearfix" slot="header" style="height:40px;line-height:40px">
                 <span style="font-size:30px;color:#409eff" v-if="data.annotation">{{ data.annotation }}</span>
@@ -98,6 +98,10 @@ export default {
       getClassifyImagesList(this.listQuery, this.datasetId).then(response => {
         let data = response.data;
         this.imagesList = data.list;
+        for (let i = 0; i < this.imagesList.length; i++) {
+          let item = this.imagesList[i];
+          item.annotation = (item.annotation == null && localStorage.getItem('predictOn')) ? item.predictClassName : item.annotation;
+        }
         let clusterNumber = data.clusterNumber;
         if (clusterNumber === null) {
           this.listQuery.clusterNumber = null;
