@@ -22,8 +22,8 @@
             <span>操作</span>
           </div>
           <el-button-group class="text item">
-            <el-button type="primary" icon="el-icon-arrow-left">上一张</el-button>
-            <el-button type="primary">下一张<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+            <el-button type="primary" icon="el-icon-arrow-left" @click="getPrevImage()">上一张</el-button>
+            <el-button type="primary" @click="getNextImg()">下一张<i class="el-icon-arrow-right el-icon--right"></i></el-button>
           </el-button-group>
           <div class="text item">
             <el-button type="success" style="width:100%">提交标注</el-button>
@@ -37,22 +37,23 @@
           v-for="(data, $index) in boxes"
           :key="$index"
           :style="{
-            top: data.y1 + 'px',
-            left: data.x1 + 'px',
-            width: data.x2 - data.x1 + 'px',
-            height: data.y2 - data.y1 + 'px' }">
-            <span style=" font-size:30px; color:rgb(40, 13, 158)">
-            {{data.tag}}
+            top: data.y + 'px',
+            left: data.x + 'px',
+            width: data.width + 'px',
+            height: data.height + 'px' }">
+            <span class="boxStyle">
+            {{data.className}}
             </span>
         </div>
         <div class="newBox" id="newBox" name="newBox"></div>
         <div
           id="img"
+          class="imgBox"
           @mousedown="imageMouseDown($event)"
           @mousemove="imageMouseMove($event)"
           @mouseup="imageMouseUp($event)">
           <img
-            src="@/assets/test-images/9.jpg"
+            :src="imgUrl"
             alt="图片"
             ondragstart="return false;"/>
           </div>
@@ -63,21 +64,34 @@
 
 <script>
 import variables from '@/common/styles/variables.scss';
+import { getNextImage, getPrevImage } from '@/api/datasets';
 export default {
   name: 'ImageDetection',
   data () {
     return {
+      imgBoxWidth: 700,
+      imgBoxHeight: 700,
+      scale: '',
       tagsList: this.$store.state.datasets.tagsList,
       tag: '',
+      imgUrl: '',
+      datasetId: this.$route.params.id,
+      listQuery: {
+        currentImageId: 0
+      },
       height: {
         height: window.innerHeight - 106 + 'px' // 用于全屏适应
       },
       box: {
-        x1: '',
-        x2: '',
-        y1: '',
-        y2: '',
-        tag: ''
+        x: '',
+        y: '',
+        width: '',
+        height: '',
+        className: ''
+      },
+      startActive: {
+        x: '',
+        y: ''
       },
       boxes: [],
       sidebarWidth: 210,
@@ -89,20 +103,56 @@ export default {
       return variables;
     }
   },
+  mounted () {
+    this.getNextImg();
+  },
   methods: {
+    getNextImg () {
+      getNextImage(this.listQuery, this.datasetId).then(response => {
+        let data = response.data;
+        this.imgUrl = data.imageDO.url;
+        let img = new Image();
+        img.src = data.imageDO.url;
+        let imgBoxScale = (this.imgBoxWidth / this.imgBoxHeight * 1.00).toFixed(2);
+        // let imgScale =
+        alert(imgBoxScale + 'fff0' + img.height);
+        this.listQuery.currentImageId = data.imageDO.id;
+        // let bboxes = data.bboxes;
+      });
+      // var image = document.getElementById('img');
+      // let box = {
+      //   x: image.offsetLeft,
+      //   y: image.offsetTop,
+      //   width: image.offsetWidth,
+      //   height: image.offsetHeight,
+      //   className: '111'
+      // };
+      // this.boxes.push(box);
+    },
+    getPrevImage () {
+      getPrevImage(this.listQuery, this.datasetId).then(response => {
+        let data = response.data;
+        this.imgUrl = data.imageDO.url;
+        this.listQuery.currentImageId = data.imageDO.id;
+        // let bboxes = data.bboxes;
+      });
+    },
     imageMouseDown (e) {
       this.$notify.warning('down');
       if (!this.tag) {
+        this.$notify.warning('请先选择标签！');
         return;
       }
-      this.box.x1 = e.pageX - this.sidebarWidth; // box相对界面的初始横坐标
-      this.box.y1 = e.pageY - this.navbarHeight; // box相对界面的初始纵坐标
+      this.box.x = e.pageX - this.sidebarWidth; // box相对界面的初始横坐标
+      this.box.y = e.pageY - this.navbarHeight; // box相对界面的初始纵坐标
       var activeBox = document.getElementsByName('newBox')[0];
       activeBox.id = 'activeBox';
       activeBox.className = 'newBox';
       activeBox.setAttribute('ondragover', 'allowDrop($event');
-      activeBox.style.top = this.box.y1 + this.navbarHeight + 'px';
-      activeBox.style.left = this.box.x1 + this.sidebarWidth + 'px';
+      this.startActive.x = e.pageX;
+      this.startActive.y = e.pageY;
+      activeBox.style.top = e.pageY + 'px';
+      activeBox.style.left = e.pageX + 'px';
       document.body.appendChild(activeBox);
     },
     imageMouseMove (e) {
@@ -116,9 +166,13 @@ export default {
         e.pageY <= image.offsetTop + image.offsetHeight
       ) {
         if (document.getElementById('activeBox') !== null) {
-          var dragBox = document.getElementById('activeBox');
-          dragBox.style.width = e.pageX - this.sidebarWidth - this.box.x1 + 'px';
-          dragBox.style.height = e.pageY - this.navbarHeight - this.box.y1 + 'px';
+          var activeBox = document.getElementById('activeBox');
+          activeBox.style.width = Math.max(e.pageX, this.startActive.x) - Math.min(e.pageX, this.startActive.x) + 'px';
+          activeBox.style.height = Math.max(e.pageY, this.startActive.y) - Math.min(e.pageY, this.startActive.y) + 'px';
+          // e.pageX - this.sidebarWidth - this.box.x + 'px';
+          // activeBox.style.height = e.pageY - this.navbarHeight - this.box.y + 'px';
+          activeBox.style.top = Math.min(e.pageY, this.startActive.y) + 'px';
+          activeBox.style.left = Math.min(e.pageX, this.startActive.x) + 'px';
         }
       }
     },
@@ -134,16 +188,16 @@ export default {
           document.body.removeChild(confirmBox);
         }
         if (confirmBox.offsetWidth > 10 && confirmBox.offsetHeight > 10) {
-          this.box.x2 = e.pageX - this.sidebarWidth;
-          this.box.y2 = e.pageY - this.navbarHeight;
-          this.box.tag = this.tag;
+          this.box.width = e.pageX - this.sidebarWidth - this.box.x;
+          this.box.height = e.pageY - this.navbarHeight - this.box.y;
+          this.box.className = this.tag;
           this.boxes.push(this.box);
           this.box = {
-            x1: '',
-            y1: '',
-            x2: '',
-            y2: '',
-            tag: ''
+            x: '',
+            y: '',
+            width: '',
+            height: '',
+            className: ''
           };
           confirmBox.style = '';
         }
@@ -163,6 +217,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$imgBoxWidth: 700px;
+$imgBoxHeight: 700px;
+
   .text {
     font-size: 14px;
   }
@@ -191,5 +248,16 @@ export default {
     opacity: 0.5;
     cursor: move;
     border: 3px solid rgb(40, 13, 158);
+}
+
+.boxStyle {
+   font-size:30px;
+   color:rgb(40, 13, 158)
+}
+
+.imgBox {
+  width: $imgBoxWidth;
+  height: $imgBoxHeight;
+  background: black;
 }
 </style>

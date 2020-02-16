@@ -12,7 +12,7 @@
           <a target="_blank" href="https://github.com/pigpig-dogdog">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
-          <a target="_blank" href="http://10.28.157.178:8080/swagger-ui.html#/">
+          <a target="_blank" href="http://10.30.150.25:8080/swagger-ui.html#/">
             <el-dropdown-item>Swagger</el-dropdown-item>
           </a>
           <el-dropdown-item divided>

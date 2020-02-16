@@ -46,6 +46,24 @@ export function getTagImagesList (query, id) {
   });
 }
 
+// 获取下一张检测图片
+export function getNextImage (query, id) {
+  return request({
+    url: '/dataset/' + id + '/getNextImage',
+    method: 'get',
+    params: query
+  });
+}
+
+// 获取上一张检测图片
+export function getPrevImage (query, id) {
+  return request({
+    url: '/dataset/' + id + '/getPrevImage',
+    method: 'get',
+    params: query
+  });
+}
+
 export function uploadImage (query, id, data) {
   return request({
     url: '/dataset/' + id + '/uploadImage',
