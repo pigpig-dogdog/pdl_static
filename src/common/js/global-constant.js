@@ -551,7 +551,7 @@ const Modules = [
   {
     id: 'datasets',
     title: '数据集',
-    content: '● 海量图片存储，算法赋能，提升标注效率',
+    content: '● 海量图片存储\n● 算法赋能，提升标注效率',
     icon: 'datasets'
   },
   {
