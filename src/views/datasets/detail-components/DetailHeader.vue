@@ -22,8 +22,8 @@
           <div slot="header" class="clearfix">
             <span style="font-size:20px">{{detail.name}}（共{{detail.imagesNumber}}张图片）</span>
             <el-button-group style="margin-left:30px;">
-              <el-button  @click="uploadImageDialogVisible = true">添加图片</el-button>
-              <el-button  @click="uploadImageDialogVisible = true">上传图片压缩包</el-button>
+              <el-button  @click="openUploadSingle">添加图片</el-button>
+              <el-button  @click="openUploadZip">上传图片压缩包</el-button>
             </el-button-group>
             <!-- <el-button style="float: right; padding: 3px 0" type="text" @click="uploadImageDialogVisible = true">添加图片/</el-button>
             <el-button style="float: right; padding: 3px 0" type="text" @click="uploadImageDialogVisible = true">添加图片</el-button> -->
@@ -78,7 +78,8 @@
             multiple>
             <i class="el-icon-upload"></i>
             <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-            <div class="el-upload__tip" slot="tip">只能上传jpg/png文件</div>
+            <div class="el-upload__tip" slot="tip" v-if="single">只能上传jpg/png文件</div>
+            <div class="el-upload__tip" slot="tip" v-else>只能上传zip文件</div>
           </el-upload>
         </div>
         <span slot="footer" class="dialog-footer">
@@ -120,6 +121,7 @@ export default {
   name: 'DetailHeader',
   data () {
     return {
+      single: true,
       detail: '',
       tagUrl: '',
       algoTypes: this.GLOBAL.algoTypes,
@@ -138,6 +140,14 @@ export default {
     this.getDetail();
   },
   methods: {
+    openUploadSingle () {
+      this.single = true;
+      this.uploadImageDialogVisible = true;
+    },
+    openUploadZip () {
+      this.single = false;
+      this.uploadImageDialogVisible = true;
+    },
     getDetail () {
       getDatasetDetail(this.$route.params.id).then(response => {
         this.detail = response.data;
