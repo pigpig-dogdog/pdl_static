@@ -21,7 +21,12 @@
         <el-card class="box-card" style="width:100%">
           <div slot="header" class="clearfix">
             <span style="font-size:20px">{{detail.name}}（共{{detail.imagesNumber}}张图片）</span>
-            <el-button style="float: right; padding: 3px 0" type="text" @click="uploadImageDialogVisible = true">添加图片</el-button>
+            <el-button-group style="margin-left:30px;">
+              <el-button  @click="uploadImageDialogVisible = true">添加图片</el-button>
+              <el-button  @click="uploadImageDialogVisible = true">上传图片压缩包</el-button>
+            </el-button-group>
+            <!-- <el-button style="float: right; padding: 3px 0" type="text" @click="uploadImageDialogVisible = true">添加图片/</el-button>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="uploadImageDialogVisible = true">添加图片</el-button> -->
           </div>
           <div class="text item">
             <el-row>
@@ -91,9 +96,15 @@
               <svg-icon icon-class="Go" style="margin-left: 10px" />
             </el-button>
           </el-header>
+          <el-header>
+            <el-button type="primary" class="goTagPredictBtn" @click="goImageTag">
+              开启图像标签预测任务
+              <svg-icon icon-class="Go" style="margin-left: 10px" />
+            </el-button>
+          </el-header>
           <el-footer>
              <el-button type="primary" class="goAutoAlgoTaskBtn" @click="goAutoAlgoTask">
-              自助式算法任务
+              开启自助式图像算法任务
             <svg-icon icon-class="Go" style="margin-left: 10px" />
             </el-button>
           </el-footer>
@@ -217,8 +228,12 @@ $coverHeight: 250px;
     width: 150px;
     font-size: 18px;
   }
+  .goTagPredictBtn {
+    width: 250px;
+    font-size: 18px;
+  }
   .goAutoAlgoTaskBtn {
-    width: 200px;
+    width: 270px;
     font-size: 18px;
   }
   .avatar-uploader .el-upload {

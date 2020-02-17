@@ -55,6 +55,8 @@
           <img
             :src="imgUrl"
             alt="图片"
+            :width=imgWidth
+            :height=imgHeight
             ondragstart="return false;"/>
           </div>
       </el-main>
@@ -69,8 +71,10 @@ export default {
   name: 'ImageDetection',
   data () {
     return {
-      imgBoxWidth: 700,
+      imgBoxWidth: 1000,
       imgBoxHeight: 700,
+      imgWidth: '',
+      imgHeight: '',
       scale: '',
       tagsList: this.$store.state.datasets.tagsList,
       tag: '',
@@ -108,14 +112,24 @@ export default {
   },
   methods: {
     getNextImg () {
+      this.boxes = [];
       getNextImage(this.listQuery, this.datasetId).then(response => {
         let data = response.data;
         this.imgUrl = data.imageDO.url;
         let img = new Image();
         img.src = data.imageDO.url;
-        let imgBoxScale = (this.imgBoxWidth / this.imgBoxHeight * 1.00).toFixed(2);
-        // let imgScale =
-        alert(imgBoxScale + 'fff0' + img.height);
+        let w = img.width;
+        let h = img.height;
+        let imgBoxScale = (this.imgBoxWidth * 1.00 / this.imgBoxHeight * 1.00).toFixed(2);
+        let imgScale = w / h;
+        console.log(imgBoxScale, w, h, imgScale);
+        if (imgScale >= imgBoxScale) {
+          this.imgHeight = this.imgBoxWidth * h / w + 'px';
+          this.imgWidth = this.imgBoxWidth + 'px';
+        } else {
+          this.imgWidth = this.imgBoxHeight * w / h + 'px';
+          this.imgHeight = this.imgBoxHeight + 'px';
+        }
         this.listQuery.currentImageId = data.imageDO.id;
         // let bboxes = data.bboxes;
       });
@@ -217,7 +231,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$imgBoxWidth: 700px;
+$imgBoxWidth: 1000px;
 $imgBoxHeight: 700px;
 
   .text {
@@ -247,17 +261,18 @@ $imgBoxHeight: 700px;
     position: absolute;
     opacity: 0.5;
     cursor: move;
-    border: 3px solid rgb(40, 13, 158);
+    border: 3px solid red;
 }
 
 .boxStyle {
    font-size:30px;
-   color:rgb(40, 13, 158)
+  //  color:rgb(40, 13, 158)
+   color:red
 }
 
 .imgBox {
   width: $imgBoxWidth;
   height: $imgBoxHeight;
-  background: black;
+  background: #FAFAFA;
 }
 </style>
