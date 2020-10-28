@@ -86,8 +86,9 @@ export default {
   data () {
     return {
       loginForm: {
-        username: getUsername(),
-        password: ''
+        username: 'admin',
+        // username: getUsername(),
+        password: 'admin'
       },
       registerForm: {
         username: '',
@@ -134,14 +135,15 @@ export default {
           title: '请输入用户名和密码！'
         });
         return;
-      };
+      }
       this.loading = true;
       this.$store.dispatch('user/login', this.loginForm)
         .then((res) => {
+          console.log('res');
           this.$router.push('/pdl/home');
         })
         .catch(() => {
-          // todo, 断网提醒
+          // TODO, 断网提醒
           this.loading = false;
         });
     },
@@ -151,7 +153,7 @@ export default {
           title: '请输入用户名和密码进行注册！'
         });
         return;
-      };
+      }
       if (this.registerForm.password !== this.confirmPassword) {
         this.$notify.warning({
           title: '两次密码输入不一致！'

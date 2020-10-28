@@ -8,7 +8,7 @@
 
 <script>
 import { getAutoAlgoTaskDetail } from '@/api/auto-algo-task';
-import ShortTable from '@/components/ShortTable/index';
+import ShortTable from '@/components/my-components/ShortTable/index';
 export default {
   name: 'AutoAlgoTaskDetail',
   components: {

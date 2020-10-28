@@ -21,7 +21,7 @@ const actions = {
   login ({ commit }, loginForm) {
     const { username, password } = loginForm;
     return new Promise((resolve, reject) => {
-      login({username: username.trim(), password: password}).then(response => {
+      login(JSON.stringify({username: username.trim(), password: password})).then(response => {
         commit('SET_TOKEN', response.data.token);
         commit('SET_USERNAME', username);
         setUsername(username);

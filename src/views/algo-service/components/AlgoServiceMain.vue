@@ -140,7 +140,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { controlAlgoService, updateReplicas, updateCodeModel } from '@/api/algo-service';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/vue-element-admin-components/Pagination';
 export default {
   name: 'AlgoServiceMain',
   components: {
@@ -189,7 +189,7 @@ export default {
   },
   methods: {
     getList () {
-      this.$store.dispatch('algo_service/getAlgoServiceList', this.listQuery);
+      // this.$store.dispatch('algo_service/getAlgoServiceList', this.listQuery);
     },
     getTagColor (status) {
       for (var i = 0; i < this.algoServiceStatusList.length; i++) {

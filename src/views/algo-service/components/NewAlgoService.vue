@@ -103,7 +103,7 @@ export default {
               type: 'error'
             });
             return;
-          };
+          }
           createAlgoService(this.createQuery, this.codeZipFile).then(response => {
             this.$message({
               message: '创建在线化服务成功！',

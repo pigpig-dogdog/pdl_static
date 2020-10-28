@@ -6,7 +6,17 @@ const state = {
 
 const mutations = {
   SET_ALGOSERVICE_LIST: (state, list) => {
-    state.algoServiceList = list;
+    // state.algoServiceList = list;
+    state.algoServiceList = [
+      {
+        name: 'gry',
+        creatorName: 'ff'
+      },
+      {
+        name: 'gry',
+        creatorName: 'ff'
+      }
+    ];
   }
 };
 
@@ -19,6 +29,7 @@ const actions = {
         resolve();
       }).catch(error => {
         reject(error);
+        commit('SET_ALGOSERVICE_LIST', []);
       });
     });
   }

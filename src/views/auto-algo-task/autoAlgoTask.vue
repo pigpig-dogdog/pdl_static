@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ShortTable from '@/components/ShortTable/index';
+import ShortTable from '@/components/my-components/ShortTable/index';
 export default {
   name: 'AutoAlgoTask',
   components: {

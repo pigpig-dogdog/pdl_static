@@ -70,7 +70,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getTrainResult } from '@/api/train';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/vue-element-admin-components/Pagination';
 export default {
   name: 'TrainMain',
   components: {

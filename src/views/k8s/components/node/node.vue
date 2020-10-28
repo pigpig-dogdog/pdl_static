@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/vue-element-admin-components/Pagination';
 import { getNodeList } from '@/api/k8s-monitor';
-import TableRect from '@/components/TableRect';
+import TableRect from '@/components/my-components/TableRect';
 export default {
   name: 'K8s-node',
   components: {

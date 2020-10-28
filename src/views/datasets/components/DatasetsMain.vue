@@ -21,7 +21,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import Pagination from '@/components/Pagination'; // Secondary package based on el-pagination
+import Pagination from '@/components/vue-element-admin-components/Pagination'; // Secondary package based on el-pagination
 export default {
   name: 'DatasetsMain',
   components: { Pagination },

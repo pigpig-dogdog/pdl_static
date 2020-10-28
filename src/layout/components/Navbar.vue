@@ -26,9 +26,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import Breadcrumb from '@/components/Breadcrumb';
-import Hamburger from '@/components/Hamburger';
-import ErrorLog from '@/components/ErrorLog';
+import Breadcrumb from '@/components/vue-element-admin-components/Breadcrumb';
+import Hamburger from '@/components/vue-element-admin-components/Hamburger';
+import ErrorLog from '@/components/vue-element-admin-components/ErrorLog';
 import { getUsername } from '@/utils/user';
 
 export default {

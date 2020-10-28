@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import ThemePicker from '@/components/ThemePicker';
+import ThemePicker from '@/components/vue-element-admin-components/ThemePicker';
 
 export default {
   components: { ThemePicker },

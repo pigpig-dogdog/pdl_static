@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import ModuleRect from '@/components/ModuleRect';
+import ModuleRect from '@/components/my-components/ModuleRect';
 export default {
   name: 'Dashboard',
   data () {

@@ -17,7 +17,13 @@ import './common/icons';
 import globalConstant from '@/common/js/global-constant';
 
 // import '@/common/js/permission';
-import { getToken } from '@/utils/user';
+// import { getToken } from '@/utils/user';
+
+import { mockXHR } from '../mock';
+mockXHR();
+// if (process.env.NODE_ENV === 'development') {
+//   mockXHR();
+// }
 
 Vue.prototype.GLOBAL = globalConstant;
 Vue.prototype.$axios = axios;
@@ -33,19 +39,19 @@ new Vue({
 });
 
 // const hasToken = getToken();
-router.beforeEach(async (to, from, next) => {
-  if (getToken()) {
-    // if is logged in, redirect to the home page
-    localStorage.setItem('clusterNumber', 0);
-    next();
-  } else {
-    /*  has no token */
-    if (to.path === '/login') {
-      // to login, go directly
-      next();
-    } else {
-      // other pages that do not have permission to access are redirected to the login page.
-      next('/login');
-    }
-  }
-});
+// router.beforeEach(async (to, from, next) => {
+//   if (getToken()) {
+//     // if is logged in, redirect to the home page
+//     localStorage.setItem('clusterNumber', 0);
+//     next();
+//   } else {
+//     /*  has no token */
+//     if (to.path === '/login') {
+//       // to login, go directly
+//       next();
+//     } else {
+//       // other pages that do not have permission to access are redirected to the login page.
+//       next('/login');
+//     }
+//   }
+// });

@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import TableEncapsulate from '@/components/TableEncapsulate';
+import TableEncapsulate from '@/components/my-components/TableEncapsulate';
 import { getNodeDetail } from '@/api/k8s-monitor';
 export default {
   name: 'NodeDetail',

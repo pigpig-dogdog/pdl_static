@@ -10,7 +10,7 @@
 
 <script>
 import { getAutoAlgoTaskDetail } from '@/api/auto-algo-task';
-import TableRect from '@/components/TableRect/index';
+import TableRect from '@/components/my-components/TableRect/index';
 export default {
   name: 'AutoAlgoTaskDetail',
   components: {

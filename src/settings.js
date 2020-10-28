@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Vue Element Admin',
+  title: 'Platform of Deep Learning',
 
   /**
    * @type {boolean} true | false
