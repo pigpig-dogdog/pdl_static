@@ -586,38 +586,38 @@ const cpuCore = ['1核', '2核', '4核'];
 const gpuMemory = ['2G', '4G', '8G', '16G'];
 const gpuNum = ['1个', '2个', '4个'];
 
-const testClassifyImagesList = [
+const testClassifyImages = [
   {
     id: '1',
-    url: require('@/assets/testClassifyImages/1.jpg')
+    url: require('@/assets/test-classify-images/1.jpg')
   },
   {
     id: '12',
-    url: require('@/assets/testClassifyImages/2.jpg')
+    url: require('@/assets/test-classify-images/2.jpg')
   },
   {
     id: '11',
-    url: require('@/assets/testClassifyImages/cat1.jpg')
+    url: require('@/assets/test-classify-images/cat1.jpg')
   },
   {
     id: '10',
-    url: require('@/assets/testClassifyImages/3.jpg')
+    url: require('@/assets/test-classify-images/3.jpg')
   },
   {
     id: '9',
-    url: require('@/assets/testClassifyImages/4.jpg')
+    url: require('@/assets/test-classify-images/4.jpg')
   },
   {
     id: '8',
-    url: require('@/assets/testClassifyImages/5.jpg')
+    url: require('@/assets/test-classify-images/5.jpg')
   },
   {
     id: '7',
-    url: require('@/assets/testClassifyImages/6.jpg')
+    url: require('@/assets/test-classify-images/6.jpg')
   },
   {
     id: '6',
-    url: require('@/assets/testClassifyImages/7.jpg')
+    url: require('@/assets/test-classify-images/7.jpg')
   }
 ];
 
@@ -680,7 +680,7 @@ export default {
   trainInfo,
   algoServiceInfo,
   Modules,
-  testClassifyImagesList,
+  testClassifyImages,
   autoAlgoTaskServiceList,
   autoAlgoTaskTrainList, // TODO:test list ,之后要删掉
   AutoAlgoTaskDetailTableList,
