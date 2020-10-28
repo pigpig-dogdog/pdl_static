@@ -1,6 +1,6 @@
-# pdl
+# <center>pdl</center>
 
-> Platform of deep learning：数据采集与标注、算法训练、算法部署一站式深度学习平台
+<center>Platform of deep learning：数据采集与标注、算法训练、算法部署一站式深度学习平台</center>
 
 
 # 项目简介
